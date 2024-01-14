@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import useMediaQuery from '@/app/hooks/useMediaQuery';
 import Image from 'next/image';
 import Icons from '@/components/Icons';
+import styles from '@/app/main.module.css'
+import Typer from './Typer';
 interface IntroProps {
     setSelectedPage: (page: string) => void;
 }
@@ -10,7 +12,7 @@ const Intro: React.FC<IntroProps> = () => {
     return (
         <section
             id="home"
-            className="md:flex md:h-full md:items-center md:justify-center my-auto "
+            className={styles.sec_intro}
         >
             {/* image  */}
             {/* <div className="md:order-2 flex justify-center   z-30">
@@ -32,7 +34,7 @@ const Intro: React.FC<IntroProps> = () => {
                 )}
             </div> */}
             {/*//@ main */}
-            <div className="z-30 basis-2/5 mt-12 md:mt-32">
+            <div className="z-30 basis-2/5 mt-12 md:mt-32 flex-col justify-center items-center">
                 {/* Heading */}
                 <motion.div
                     initial="hidden"
@@ -43,8 +45,9 @@ const Intro: React.FC<IntroProps> = () => {
                         hidden: { opacity: 0, x: -50 },
                         visible: { opacity: 1, x: 0 },
                     }}
+					className='flex-col items-center justify-center space-y-3'
                 >
-                    <p className="text-6xl font-merriweather text-slate-500  text-center md:text-start xs:tracking-md">
+                    <p className="text-6xl font-merriweather text-slate-500 text-start md:text-center xs:tracking-md">
                         Yuxuan <br />
                         <span
                             className="text-slate-900 xs:relative xs:text-deep-blue xs:font-semibold xs:tracking-md
@@ -53,7 +56,11 @@ const Intro: React.FC<IntroProps> = () => {
                             Peng
                         </span>
                     </p>
-                    <p className="mt-10 mb-7 text-sm text-center md:text-start">
+					<div >
+						
+						<Typer/>
+					</div>
+                    <p className="mt-10 mb-7 text-sm">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore
                         magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -102,6 +109,7 @@ const Intro: React.FC<IntroProps> = () => {
                         hidden: { opacity: 0, x: -50 },
                         visible: { opacity: 1, x: 0 },
                     }}
+					className='flex-col items-center justify-center space-y-3'
                 >
                     <Icons />
                 </motion.div>

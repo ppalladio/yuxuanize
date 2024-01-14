@@ -76,3 +76,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+#typeText {
+	@apply align-middle	inline-block text-orange-300 tracking-[2px] capitalize
+}
+
+#typeCursor {
+	@apply inline-block align-middle w-[3px] h-[50px] bg-orange-300;
+	animation: blink .75s step-end infinite
+}
+#typeContainer {
+	@apply flex flex-row items-center justify-center space-x-2;
+
+}
+
+.staticText{
+	@apply align-middle	inline-block text-slate-700 font-semibold font-merriweathersans capitalize tracking-[2px]
+}
+@keyframes blink {
+	from, to { 
+		background-color: transparent 
+	}
+	50% { 
+		background-color: orange; 
+	}
+}
