@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 const Typer = () => {
     // List of sentences with their associated colors
     const content = [
-        { text: 'Full stack developer', color: '#390099' },
+        { text: 'Full stack developer', color: '#FFC857' },
         { text: 'dreamer', color: '#E88EED' },
         { text: 'JPEG(NFT) collector', color: '#FF0054' },
         { text: 'Visual Creature', color: '#34E4EA' },
