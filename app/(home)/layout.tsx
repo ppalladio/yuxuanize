@@ -1,8 +1,6 @@
 'use client';
-
-import { Navbar } from '@/components/Navbar';
 import Intro from './components/Intro';
-import Projects from './components/Work';
+import Works from './components/Works';
 
 export default function HomepageLayout({
     children,
@@ -10,16 +8,15 @@ export default function HomepageLayout({
     children: React.ReactNode;
 }) {
     return (
-        <>
-            {/* <div className="flex flex-row items-center justify-end ">
-                <Navbar />
-				<div className='mr-[10rem]'></div>
-            </div> */}
-            <div className="flex flex-col items-center justify-center ">
+        // Flex container adjusted for center alignment on mobile
+        <div className="flex flex-col items-center justify-center w-full h-full md:flex-row md:justify-center md:items-stretch">
+            <div className="flex w-full justify-center items-center md:flex-1 md:max-w-[50%]">
                 <Intro />
-                <Projects  />
-                {children}
             </div>
-        </>
+            <div className="flex w-full justify-center items-center md:flex-1 md:max-w-[50%]">
+                <Works />
+            </div>
+            {children}
+        </div>
     );
 }
