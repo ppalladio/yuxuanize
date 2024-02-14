@@ -9,14 +9,15 @@ import { EvervaultCard, Icon } from '@/components/ui/evervault-card';
 const Intro = () => {
     const isAboveMediumScreen = useMediaQuery('(min-width: 992px)');
     return (
-        <div className="w-full h-full relative">
-            <div className=" absolute inset-0 flex flex-col items-center justify-center ">
+        <div className="w-full h-screen">
+            {/* relative */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <div className="border flex flex-col items-start max-w-lg mx-auto p-4 relative max-h-lg">
                     <Icon className="absolute h-6 w-6 -top-3 -left-3 " />
                     <Icon className="absolute h-6 w-6 -bottom-3 -left-3 " />
                     <Icon className="absolute h-6 w-6 -top-3 -right-3 " />
                     <Icon className="absolute h-6 w-6 -bottom-3 -right-3 " />
-                    <EvervaultCard text="" />
+                    <EvervaultCard text="?" />
                     <section id="home" className={styles.sec_intro}>
                         {/* image  */}
 

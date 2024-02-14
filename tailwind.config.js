@@ -20,6 +20,7 @@ module.exports = {
 		fontFamily: {
 			merriweathersans: ['Merriweather Sans'],
 			merriweather: ['Merriweather'],
+			pixelify: ['Pixelify Sans'],
 		},
       colors: {
         border: "hsl(var(--border))",
