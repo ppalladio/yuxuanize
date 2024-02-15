@@ -66,7 +66,7 @@ const Typer = () => {
 
     return (
         <div className="text-2xl" id="typeContainer">
-            <div className="staticText">is a</div>
+            {/* <div className="staticText">is a</div> */}
             <div id="typeText" style={{ color: currentColor }}>
                 {currentText}
             </div>

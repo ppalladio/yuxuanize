@@ -81,11 +81,11 @@
 }
 
 #typeText {
-    @apply align-middle	inline-block text-orange-300 tracking-[2px] capitalize;
+    @apply align-middle	inline-block text-orange-300 tracking-[2px] capitalize text-sm;
 }
 
 #typeCursor {
-    @apply inline-block align-middle w-[3px] h-[50px] bg-orange-300;
+    @apply inline-block align-middle w-[3px] h-[20px] ;
     animation: blink 0.75s step-end infinite;
 }
 #typeContainer {

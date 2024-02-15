@@ -77,11 +77,12 @@ export function Projects() {
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                             My Projects
                         </h2>
-                        <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                            a
-                        </p>
+                        {/* <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                            overview
+                        </p> */}
                     </motion.div>
                     <div className="grid gap-6 sm:grid-cols-2 lg:gap-10 xl:gap-12">
+                        {/* //@c1*/}
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
@@ -92,31 +93,25 @@ export function Projects() {
                                 visible: { opacity: 1, y: 0 },
                             }}
                         >
-                            <Card className="aspect-square md:aspect-auto">
+                            <Card className="aspect-square md:aspect-auto bg-slate-300">
                                 <CardHeader className="flex flex-col gap-2 items-center justify-center">
-                                    <CardTitle>Next.js Website</CardTitle>
+                                    <CardTitle>Awal</CardTitle>
                                     <Image
                                         src="/projects/awal-logo.jpg"
                                         alt="awal"
                                         width={200}
                                         height={100}
-                                        className="rounded-md bg-fill"
+                                        className="rounded-lg bg-auto "
+                                        loading={'lazy'}
                                     />
                                     <CardDescription id="projectIntro">
-                                        {/* <TextGenerateEffect
-                                            words={words}
-                                            className=""
-                                        /> */}
+                                        Awal is a community-driven initiative to
+                                        foster the Tamazight language in the
+                                        digital realm.
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent className="flex items-center justify-center flex-1">
                                     <div className="grid gap-2 text-center">
-                                        <div
-                                            className="text-3xl font-bold"
-                                            id="projectName"
-                                        >
-                                            Awal
-                                        </div>
                                         <div
                                             className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center"
                                             id="logo"
@@ -153,12 +148,77 @@ export function Projects() {
                                     </div>
                                 </CardContent>
                                 <CardFooter className="flex flex-row">
-                                    <Button size="sm">View Details</Button>
+                                    <Dialog>
+                                        <DialogTrigger>
+                                            <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-neutral-950 px-6 font-medium text-neutral-200 transition hover:scale-110">
+                                                <span>Details</span>
+                                                <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
+                                                    <div className="relative h-full w-8 bg-slate-100/20"></div>
+                                                </div>
+                                            </button>
+                                        </DialogTrigger>
+                                        <DialogContent>
+                                            <DialogHeader>
+                                                <DialogTitle className="mb-5">
+                                                    Check out details
+                                                </DialogTitle>
+                                                <DialogDescription>
+                                                    {' '}
+                                                    <ul className="flex flex-col items-start justify-center pl-5 space-y-1 mb-5 text-slate-200">
+                                                        <li>Shadcn UI</li>
+                                                        <li>
+                                                            Framer-Motion for
+                                                            Animation
+                                                        </li>
+                                                        <li>
+                                                            Next-Auth for
+                                                            Authentication
+                                                        </li>
+                                                        <li>
+                                                            Next.js
+                                                            Internationalization
+                                                        </li>
+                                                        <li>
+                                                            MongoDb + Prisma
+                                                        </li>
+                                                    </ul>
+                                                    <ul className="flex flex-col items-start justify-center pl-5 space-y-5">
+                                                        <li>
+                                                            <Link
+                                                                href="https://github.com/CollectivaT-dev/awal-web"
+                                                                target="_blank"
+                                                                scroll={false}
+                                                                className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100 hover:text-purple-400 ease-in-out duration-500"
+                                                            >
+                                                                Github
+                                                                <ChevronRightSquare
+                                                                    size={18}
+                                                                />
+                                                            </Link>
+                                                        </li>
+
+                                                        <li>
+                                                            <Link
+                                                                href="https://www.awaldigital.org/"
+                                                                target="_blank"
+                                                                scroll={false}
+                                                                className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100"
+                                                            >
+                                                                <button className="relative overflow-hidden rounded-md bg-slate-100 px-5 py-2.5 text-slate-900 transition-all duration-300 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)] active:-translate-y-1 active:scale-x-90 active:scale-y-110">
+                                                                    Try me
+                                                                </button>
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </DialogDescription>
+                                            </DialogHeader>
+                                        </DialogContent>
+                                    </Dialog>
                                 </CardFooter>
                             </Card>
                         </motion.div>
 
-                        {/* c2 */}
+                        {/* //@ c2 */}
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
@@ -169,8 +229,8 @@ export function Projects() {
                                 visible: { opacity: 1, y: 0 },
                             }}
                         >
-                            <Card className="aspect-square md:aspect-auto">
-                                <CardHeader className="flex flex-col gap-2">
+                            <Card className="aspect-square md:aspect-auto bg-slate-300">
+                                <CardHeader className="flex flex-col gap-2 items-center justify-center">
                                     <CardTitle>Next.js Website</CardTitle>
                                     <Image
                                         src="/projects/awal-logo.jpg"
@@ -178,7 +238,7 @@ export function Projects() {
                                         width={200}
                                         height={100}
                                         className="rounded-md bg-fill"
-                                    ></Image>
+                                    />
                                     <CardDescription id="projectIntro">
                                         A beautiful and responsive website built
                                         with Next.js.
@@ -187,16 +247,9 @@ export function Projects() {
                                 <CardContent className="flex items-center justify-center flex-1">
                                     <div className="grid gap-2 text-center">
                                         <div
-                                            className="text-3xl font-bold"
-                                            id="projectName"
-                                        >
-                                            e-comm
-                                        </div>
-                                        <div
-                                            className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center"
+                                            className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2"
                                             id="logo"
                                         >
-                                            <Badge>tailwind</Badge>
                                             <TbBrandNextjs
                                                 size={36}
                                                 className="text-slate-800"
@@ -232,7 +285,7 @@ export function Projects() {
                                     <Dialog>
                                         <DialogTrigger>
                                             <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-neutral-950 px-6 font-medium text-neutral-200 transition hover:scale-110">
-                                                <span>Hover me</span>
+                                                <span>Details</span>
                                                 <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
                                                     <div className="relative h-full w-8 bg-slate-100/20"></div>
                                                 </div>
@@ -241,16 +294,29 @@ export function Projects() {
                                         <DialogContent>
                                             <DialogHeader>
                                                 <DialogTitle className="mb-5">
-                                                    Are you absolutely sure?
+                                                    Check out details
                                                 </DialogTitle>
                                                 <DialogDescription>
+                                                    <ul className="flex flex-col items-start justify-center pl-5 space-y-1 mb-5 text-slate-200">
+                                                        <li>Shadcn UI</li>
+                                                        <li>Stripe Webhooks</li>
+                                                        <li>Clerk for Auth</li>
+                                                        <li>
+                                                            Customized CMS and
+                                                            API routes.{' '}
+                                                        </li>
+                                                        <li>
+                                                            MySQL + Prisma +
+                                                            PlanetScale
+                                                        </li>
+                                                    </ul>
                                                     <ul className="flex flex-col items-start justify-center pl-5 space-y-5">
                                                         <li>
                                                             <Link
-                                                                href="https://github.com/ppalladio/portfolio-next"
+                                                                href="https://github.com/ppalladio/e-comm-front"
                                                                 target="_blank"
                                                                 scroll={false}
-                                                                className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100"
+                                                                className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100 hover:text-purple-400 ease-in-out duration-500"
                                                             >
                                                                 Github -
                                                                 Storefront{' '}
@@ -261,10 +327,10 @@ export function Projects() {
                                                         </li>
                                                         <li>
                                                             <Link
-                                                                href="https://github.com/ppalladio/portfolio-next"
+                                                                href="https://github.com/ppalladio/e-comm"
                                                                 target="_blank"
                                                                 scroll={false}
-                                                                className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100"
+                                                                className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100 hover:text-purple-400 ease-in-out duration-500"
                                                             >
                                                                 Github - CMS{' '}
                                                                 <ChevronRightSquare
@@ -292,7 +358,7 @@ export function Projects() {
                                 </CardFooter>
                             </Card>
                         </motion.div>
-                        {/* c3 */}
+                        {/* //@ c3 */}
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
@@ -303,8 +369,8 @@ export function Projects() {
                                 visible: { opacity: 1, y: 0 },
                             }}
                         >
-                            <Card className="aspect-square md:aspect-auto">
-                                <CardHeader className="flex flex-col gap-2">
+                            <Card className="aspect-square md:aspect-auto bg-slate-300">
+                                <CardHeader className="flex flex-col gap-2 items-center justify-center">
                                     <CardTitle>Next.js Website</CardTitle>
                                     <Image
                                         src="/projects/awal-logo.jpg"
@@ -312,7 +378,7 @@ export function Projects() {
                                         width={200}
                                         height={100}
                                         className="rounded-md bg-fill"
-                                    ></Image>
+                                    />
                                     <CardDescription id="projectIntro">
                                         A beautiful and responsive website built
                                         with Next.js.
@@ -321,16 +387,9 @@ export function Projects() {
                                 <CardContent className="flex items-center justify-center flex-1">
                                     <div className="grid gap-2 text-center">
                                         <div
-                                            className="text-3xl font-bold"
-                                            id="projectName"
-                                        >
-                                            booking website
-                                        </div>
-                                        <div
-                                            className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center"
+                                            className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2"
                                             id="logo"
                                         >
-                                            {' '}
                                             <TbBrandNextjs
                                                 size={36}
                                                 className="text-slate-800"
@@ -359,7 +418,75 @@ export function Projects() {
                                     </div>
                                 </CardContent>
                                 <CardFooter className="flex flex-row">
-                                    <Button size="sm">View Details</Button>
+                                    <Dialog>
+                                        <DialogTrigger>
+                                            <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-neutral-950 px-6 font-medium text-neutral-200 transition hover:scale-110">
+                                                <span>Details</span>
+                                                <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
+                                                    <div className="relative h-full w-8 bg-slate-100/20"></div>
+                                                </div>
+                                            </button>
+                                        </DialogTrigger>
+                                        <DialogContent>
+                                            <DialogHeader>
+                                                <DialogTitle className="mb-5">
+                                                    Check out details
+                                                </DialogTitle>
+                                                <DialogDescription>
+                                                    {' '}
+                                                    <ul className="flex flex-col items-start justify-center pl-5 space-y-1 mb-5 text-slate-200">
+                                                        <li>
+                                                            Tailwind Animation
+                                                        </li>
+
+                                                        <li>
+                                                            Next-Auth for Google
+                                                            and Github Log in /
+                                                            Sign up
+                                                        </li>
+                                                        <li>
+                                                            Booking /
+                                                            Reservation system
+                                                        </li>
+                                                        <li>
+                                                            Image upload using
+                                                            Cloudinary CDN
+                                                        </li>
+                                                        <li>
+                                                            MongoDb + Prisma
+                                                        </li>
+                                                    </ul>
+                                                    <ul className="flex flex-col items-start justify-center pl-5 space-y-5">
+                                                        <li>
+                                                            <Link
+                                                                href="https://github.com/ppalladio/fullstack-booking-website"
+                                                                target="_blank"
+                                                                scroll={false}
+                                                                className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100"
+                                                            >
+                                                                Github
+                                                                <ChevronRightSquare
+                                                                    size={18}
+                                                                />
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link
+                                                                href="https://github.com/ppalladio/portfolio-next"
+                                                                target="_blank"
+                                                                scroll={false}
+                                                                className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100"
+                                                            >
+                                                                <button className="relative overflow-hidden rounded-md bg-slate-100 px-5 py-2.5 text-slate-900 transition-all duration-300 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)] active:-translate-y-1 active:scale-x-90 active:scale-y-110">
+                                                                    Try me
+                                                                </button>
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </DialogDescription>
+                                            </DialogHeader>
+                                        </DialogContent>
+                                    </Dialog>
                                 </CardFooter>
                             </Card>
                         </motion.div>
@@ -373,14 +500,14 @@ export function Projects() {
                                 visible: { opacity: 1, y: 0 },
                             }}
                         >
-                            <Card className="aspect-square md:aspect-auto h-[100%] w-[100%]">
+                            <Card className="aspect-square md:aspect-auto h-[100%] w-[100%] bg-slate-400 ">
                                 <MaskContainer
                                     revealText={
                                         <p className="font-pixelify line-through max-w-4xl mx-auto text-purple-800 text-center  text-4xl font-bold">
                                             placeholder
                                         </p>
                                     }
-                                    className="h-[100%] border rounded-md "
+                                    className="h-[100%] border rounded-md cursor-none"
                                 >
                                     Lorem ipsum dolor sit,{' '}
                                     <span className="text-red-500">

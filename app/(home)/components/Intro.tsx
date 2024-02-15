@@ -5,12 +5,14 @@ import Icons from '@/components/Icons';
 import styles from '@/app/main.module.css';
 import Typer from './Typer';
 import { EvervaultCard, Icon } from '@/components/ui/evervault-card';
+import { SparklesCore } from '@/components/ui/sparkles';
 
 const Intro = () => {
     const isAboveMediumScreen = useMediaQuery('(min-width: 992px)');
     return (
         <div className="w-full h-screen">
             {/* relative */}
+
             <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <div className="border flex flex-col items-start max-w-lg mx-auto p-4 relative max-h-lg">
                     <Icon className="absolute h-6 w-6 -top-3 -left-3 " />
@@ -19,10 +21,9 @@ const Intro = () => {
                     <Icon className="absolute h-6 w-6 -bottom-3 -right-3 " />
                     <EvervaultCard text="?" />
                     <section id="home" className={styles.sec_intro}>
-                        {/* image  */}
-
-                        <div className="z-30 basis-2/5 mt-12 md:mt-32 flex flex-col justify-center items-center">
+                        <div className="z-30 basis-2/5 mt-2 md:mt-5 flex flex-col justify-center items-center">
                             {/* Heading */}
+
                             <motion.div
                                 initial="hidden"
                                 whileInView="visible"
@@ -34,13 +35,15 @@ const Intro = () => {
                                 }}
                                 className="flex-col items-center justify-center space-y-3"
                             >
+                                {' '}
                                 <p className="text-6xl font-merriweather flex justify-center items-center xs:tracking-md">
                                     Yuxuan
                                     <br />{' '}
                                     <span className="text-[#78A1BB] xs:relative xs:text-deep-blue xs:font-semibold">
                                         Peng
-                                    </span>
-                                </p>
+                                    </span>{' '}
+                                    
+                                </p><Typer />
                             </motion.div>
 
                             <motion.div
