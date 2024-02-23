@@ -123,11 +123,17 @@ export const SparklesCore = (props: ParticlesProps) => {
                             },
                             color: {
                                 value: [
-                                    '#4deeea',
-                                    '#74ee15',
-                                    '#ffdd32 ',
-                                    '#f95738',
-                                    '#ffffff',
+                                    '#FFD700',
+                                    '#f9e4ff',
+                                    '#6A0DAD',
+                                    '#D4AF37',
+                                    '#8F00FF',
+									'#B76E79'
+                                    // '#4deeea',
+                                    // '#74ee15',
+                                    // '#ffdd32 ',
+                                    // '#f95738',
+                                    // '#ffffff',
                                 ],
                             },
                             effect: {
