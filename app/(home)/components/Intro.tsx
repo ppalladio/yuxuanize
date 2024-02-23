@@ -14,14 +14,14 @@ const Intro = () => {
             {/* relative */}
 
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <div className="border flex flex-col items-start max-w-lg mx-auto p-4 relative max-h-lg">
+                <div className="border flex flex-col items-center justify-center mx-auto p-2 sm:p-4 relative max-w-xs sm:max-w-lg max-h-lg">
                     <Icon className="absolute h-6 w-6 -top-3 -left-3 " />
                     <Icon className="absolute h-6 w-6 -bottom-3 -left-3 " />
                     <Icon className="absolute h-6 w-6 -top-3 -right-3 " />
                     <Icon className="absolute h-6 w-6 -bottom-3 -right-3 " />
                     <EvervaultCard text="?" />
                     <section id="home" className={styles.sec_intro}>
-                        <div className="z-30 basis-2/5 mt-2 md:mt-5 flex flex-col justify-center items-center">
+                        <div className="z-30 basis-2/5 mt-2 md:mt-5 flex flex-col justify-center items-center p-10 sm:p-0">
                             {/* Heading */}
 
                             <motion.div
@@ -33,17 +33,17 @@ const Intro = () => {
                                     hidden: { opacity: 0, x: -50 },
                                     visible: { opacity: 1, x: 0 },
                                 }}
-                                className="flex-col items-center justify-center space-y-3"
+                                className="flex-col items-center justify-center space-y-3 "
                             >
                                 {' '}
-                                <p className="text-6xl font-merriweather flex justify-center items-center xs:tracking-md">
+                                <p className="text-3xl sm:text-5xl font-merriweather flex justify-center items-center xs:tracking-md">
                                     Yuxuan
                                     <br />{' '}
                                     <span className="text-[#78A1BB] xs:relative xs:text-deep-blue xs:font-semibold">
                                         Peng
                                     </span>{' '}
-                                    
-                                </p><Typer />
+                                </p>
+                                <Typer />
                             </motion.div>
 
                             <motion.div

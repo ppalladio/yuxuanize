@@ -113,37 +113,16 @@ export function Projects() {
                                 <CardContent className="flex items-center justify-center flex-1">
                                     <div className="grid gap-2 text-center">
                                         <div
-                                            className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center"
+                                            className="text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center"
                                             id="logo"
                                         >
-                                            <TbBrandNextjs
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiPrisma
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiTailwindcss
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiMongodb
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiFigma
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiFramer
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiTypescript
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
+                                            <TbBrandNextjs className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiPrisma className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiTailwindcss className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiMongodb className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiFigma className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiFramer className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiTypescript className="text-slate-800 text-2xl md:text-4xl" />
                                         </div>
                                     </div>
                                 </CardContent>
@@ -250,34 +229,13 @@ export function Projects() {
                                             className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2"
                                             id="logo"
                                         >
-                                            <TbBrandNextjs
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiPrisma
-                                                size={36}
-                                                className="text-slate-800"
-                                            />{' '}
-                                            <SiTypescript
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiReact
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiTailwindcss
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiPlanetscale
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiStripe
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
+                                            <TbBrandNextjs className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiPrisma className="text-slate-800 text-2xl md:text-4xl" />{' '}
+                                            <SiTypescript className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiReact className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiTailwindcss className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiPlanetscale className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiStripe className="text-slate-800 text-2xl md:text-4xl" />
                                         </div>
                                     </div>
                                 </CardContent>
@@ -390,30 +348,12 @@ export function Projects() {
                                             className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2"
                                             id="logo"
                                         >
-                                            <TbBrandNextjs
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiPrisma
-                                                size={36}
-                                                className="text-slate-800"
-                                            />{' '}
-                                            <SiTypescript
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiReact
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiTailwindcss
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
-                                            <SiMongodb
-                                                size={36}
-                                                className="text-slate-800"
-                                            />
+                                            <TbBrandNextjs className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiPrisma className="text-slate-800 text-2xl md:text-4xl" />{' '}
+                                            <SiTypescript className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiReact className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiTailwindcss className="text-slate-800 text-2xl md:text-4xl" />
+                                            <SiMongodb className="text-slate-800 text-2xl md:text-4xl" />
                                         </div>
                                     </div>
                                 </CardContent>
