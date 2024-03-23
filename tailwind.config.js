@@ -18,9 +18,10 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                merriweathersans: ['Merriweather Sans'],
-                merriweather: ['Merriweather'],
+ 
                 pixelify: ['Pixelify Sans'],
+                sangBleu: ['var(--font-sangBleu)'],
+				jilliya:['var(--font-jalliya)'],
             },
             colors: {
                 border: 'hsl(var(--border))',

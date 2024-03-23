@@ -36,7 +36,7 @@ const Intro = () => {
                                 className="flex-col items-center justify-center space-y-3 "
                             >
                                 {' '}
-                                <p className="text-3xl sm:text-5xl font-merriweather flex justify-center items-center xs:tracking-md">
+                                <p className="text-3xl sm:text-5xl  flex justify-center items-center xs:tracking-md">
                                     Yuxuan
                                     <br />{' '}
                                     <span className="text-[#78A1BB] xs:relative xs:text-deep-blue xs:font-semibold">
