@@ -6,7 +6,7 @@ import localFont from '@next/font/local';
 const font = localFont({
     src: [
         {
-            path: '../public/fonts/sangBleu/SangBleuSunrise-Air.ttf',
+            path: '../public/fonts/SangBleu/SangBleuSunrise-Air.ttf',
             style: 'normal',
             weight: '100',
         },
