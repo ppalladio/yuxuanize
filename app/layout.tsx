@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import localFont from '@next/font/local';
@@ -59,6 +58,7 @@ const font = localFont({
             path: '../public/fonts/SangBleu/SangBleuSunrise-BoldItalic.ttf',
             style: 'italic',
             weight: '700',
+			
         },
     ],
     variable: '--font-sangBleu',

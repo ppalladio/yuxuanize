@@ -18,10 +18,9 @@ module.exports = {
         },
         extend: {
             fontFamily: {
- 
                 pixelify: ['Pixelify Sans'],
                 sangBleu: ['var(--font-sangBleu)'],
-				jilliya:['var(--font-jalliya)'],
+				jalliya:['var(--font-jalliya)'],
             },
             colors: {
                 border: 'hsl(var(--border))',

@@ -2,12 +2,13 @@
 import { Projects } from '@/components/component/projects';
 import Intro from './components/Intro';
 import { SparklesCore } from '@/components/ui/sparkles';
+import { Jalliya } from '../layout';
 
 export default function HomepageLayout({
     children,
-}: {
+}: Readonly<{
     children: React.ReactNode;
-}) {
+}>) {
     return (
         // Flex container adjusted for center alignment on mobile
         <>

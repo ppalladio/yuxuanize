@@ -6,7 +6,7 @@ import { Separator } from '@/components/ui/separator';
 
 const CvEn = () => {
     return (
-        <div className="flex flex-col justify-center font-sangBleu">
+        <div className="flex flex-col justify-center items-center font-[200]">
             {/* header */}
             <header className="my-auto flex justify-around items-center ">
                 <h1 className="font-semibold text-3xl  text-gray-300">
@@ -48,7 +48,7 @@ const CvEn = () => {
                 </div>
             </header>
             {/* labor	 */}
-            <Separator className="w-[80vw]" />
+            <Separator className="w-[80vw] text-center" />
         </div>
     );
 };

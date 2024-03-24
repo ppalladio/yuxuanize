@@ -75,6 +75,7 @@
         @apply border-border;
     }
     body {
+		overflow-x: hidden;
         font-weight: 300;
         @apply bg-background text-foreground font-sangBleu;
     }

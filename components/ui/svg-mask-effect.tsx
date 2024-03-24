@@ -7,7 +7,7 @@ export const MaskContainer = ({
     children,
     revealText,
     size = 10,
-    revealSize = 200,
+    revealSize = 300,
     className,
 }: {
     children?: string | React.ReactNode;
@@ -68,7 +68,7 @@ export const MaskContainer = ({
                     onMouseLeave={() => {
                         setIsHovered(false);
                     }}
-                    className="max-w-4xl mx-auto text-center text-white text-4xl font-bold relative z-20"
+                    className="max-w-4xl mx-auto text-center text-white  text-4xl font-bold relative z-20"
                 >
                     {children}
                 </div>

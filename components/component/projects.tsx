@@ -26,6 +26,8 @@ import {
     SiTypescript,
     SiFramer,
     SiReact,
+    SiDocker,
+    SiPostgresql,
 } from 'react-icons/si';
 import { MaskContainer } from '../ui/svg-mask-effect';
 import { Badge } from '../ui/badge';
@@ -116,6 +118,7 @@ export function Projects() {
                                         <SiFigma className="text-slate-800 text-2xl md:text-4xl" />
                                         <SiFramer className="text-slate-800 text-2xl md:text-4xl" />
                                         <SiTypescript className="text-slate-800 text-2xl md:text-4xl" />
+                                        <SiDocker className="text-slate-800 text-2xl md:text-4xl" />
                                     </div>
                                 </div>
                             </CardContent>
@@ -212,8 +215,8 @@ export function Projects() {
                                     className="rounded-md bg-fill"
                                 />
                                 <CardDescription id="projectIntro">
-                                    A beautiful and responsive website built
-                                    with Next.js.
+                                    A e-comm website with a collection of
+                                    garments directed by me.
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="flex items-center justify-center flex-1">
@@ -227,8 +230,8 @@ export function Projects() {
                                         <SiTypescript className="text-slate-800 text-2xl md:text-4xl" />
                                         <SiReact className="text-slate-800 text-2xl md:text-4xl" />
                                         <SiTailwindcss className="text-slate-800 text-2xl md:text-4xl" />
-                                        <SiPlanetscale className="text-slate-800 text-2xl md:text-4xl" />
                                         <SiStripe className="text-slate-800 text-2xl md:text-4xl" />
+                                        <SiPostgresql className="text-slate-800 text-2xl md:text-4xl" />
                                     </div>
                                 </div>
                             </CardContent>
@@ -257,8 +260,9 @@ export function Projects() {
                                                         routes.{' '}
                                                     </li>
                                                     <li>
-                                                        MySQL + Prisma +
-                                                        PlanetScale
+                                                        PostgresSQL + Prisma +
+                                                        NeonDB (Migrated from
+                                                        PlanetScale )
                                                     </li>
                                                 </ul>
                                                 <ul className="flex flex-col items-start justify-center pl-5 space-y-5">
@@ -290,19 +294,14 @@ export function Projects() {
                                                     </li>
                                                     <li>
                                                         <Link
-                                                            href="/"
+                                                            href="https://yuxuanize-e-comm.vercel.app/"
                                                             target="_blank"
                                                             scroll={false}
                                                             className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100 cursor-not-allowed"
                                                         >
-                                                            {/* <button className="relative overflow-hidden rounded-md bg-slate-100 px-5 py-2.5 text-slate-900 transition-all duration-300 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)] active:-translate-y-1 active:scale-x-90 active:scale-y-110">
+                                                            <button className="relative overflow-hidden rounded-md bg-slate-100 px-5 py-2.5 text-slate-900 transition-all duration-300 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)] active:-translate-y-1 active:scale-x-90 active:scale-y-110">
                                                                 Try me
-                                                            </button> */}
-                                                            <Button variant="secondary">
-                                                                Database
-                                                                Migrating
-                                                                <MessageCircleWarning className="ml-2" />
-                                                            </Button>
+                                                            </button>
                                                         </Link>
                                                     </li>
                                                 </ul>
@@ -327,7 +326,7 @@ export function Projects() {
                         <Card className="aspect-square md:aspect-auto bg-slate-300">
                             <CardHeader className="flex flex-col gap-2 items-center justify-center">
                                 <CardTitle className="font-sangBleu">
-                                    A replica of AxNBxN
+                                    A replica of ☁️B*B
                                 </CardTitle>
                                 <Image
                                     src="/projects/booking.png"
@@ -337,8 +336,7 @@ export function Projects() {
                                     className="rounded-md bg-fill"
                                 />
                                 <CardDescription id="projectIntro">
-                                    A beautiful and responsive website built
-                                    with Next.js.
+                                    A partial clone of booking site ☁️b*b
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="flex items-center justify-center flex-1">
@@ -437,20 +435,17 @@ export function Projects() {
                         <Card className="aspect-square md:aspect-auto h-[100%] w-[100%] bg-slate-400 ">
                             <MaskContainer
                                 revealText={
-                                    <p className="font-pixelify line-through max-w-4xl mx-auto text-purple-800 text-center  text-4xl font-bold">
-                                        placeholder
+                                    <p className="font-pixelify line-through max-w-4xl mx-auto text-purple-800 text-center text-4xl font-light">
+                                        What lays beyond?
                                     </p>
                                 }
-                                className="h-[100%] border rounded-md cursor-none"
+                                className="h-[100%] border rounded-md cursor-none "
+                                revealSize={300}
                             >
-                                Lorem ipsum dolor sit,{' '}
-                                <span className="text-red-500">
-                                    amet consectetur adipisicing elit.
-                                </span>{' '}
-                                Ducimus quaerat eos quam amet nihil, blanditiis
-                                quae quod voluptatibus sit dolorum similique,
-                                nostrum voluptate ea sed nobis tempora. Iusto,
-                                esse facere.
+                                <span className="px-10">
+                                    Mermaid, Jelly Bean, Polar bear, 612, Flying
+                                    pigs, Holographic noodle
+                                </span>
                             </MaskContainer>
                         </Card>
                     </motion.div>
