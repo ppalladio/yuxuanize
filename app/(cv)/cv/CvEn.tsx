@@ -1,51 +1,38 @@
 'use client';
-import Link from 'next/link';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
-import { MdOutlineMail } from 'react-icons/md';
+import { SiProtonmail } from 'react-icons/si';
 import { Separator } from '@/components/ui/separator';
+import { AnimatedTooltip } from '@/components/ui/tooltip';
+const icons = [
+    {
+        id: 1,
+        name: 'Github',
+        icon: <SiGithub className="text-[3rem]" />,
+        url: 'https://github.com/ppalladio',
+    },
+    {
+        id: 2,
+        name: 'Linkedin',
+        icon: <SiLinkedin className="text-[3rem]" />,
+        url: 'https://www.linkedin.com/in/yuxuanpeng/',
+    },
+    {
+        id: 3,
+        name: 'Mail',
+        icon: <SiProtonmail className="text-[3rem]" />,
+        url: 'mailto:yuxuan.peng@pm.me',
+    },
+];
 
 const CvEn = () => {
     return (
         <div className="mx-auto font-[200]">
             {/* header */}
-            <header className="my-auto flex flex-row justify-evenly items-center ">
-                <h1 className="font-semibold text-3xl  text-gray-300">
+            <header className="my-auto flex flex-col lg:flex-row justify-evenly items-center mx-5 ">
+                <h1 className="font-bold text-[7rem]  text-gray-300">
                     Yuxuan Peng
                 </h1>
-                <div className="grid grid-cols-2 gap-3 ">
-                    <div>
-                        <div>
-                            <Link
-                                href={'https://github.com/ppalladio'}
-                                scroll={false}
-                                target="_blank"
-                            >
-                                <SiGithub className="m-1 " />
-                            </Link>
-                        </div>
-                        <div>
-                            <Link
-                                href={'https://www.linkedin.com/in/yuxuanpeng/'}
-                                scroll={false}
-                                target="_blank"
-                            >
-                                <SiLinkedin className="m-1" />
-                            </Link>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <Link
-                                href={'mailto:yuxuan.peng@pm.me'}
-                                scroll={false}
-                                target="_blank"
-                            >
-                                <MdOutlineMail className="m-1" />
-                            </Link>
-                        </div>
-                        <div>d</div>
-                    </div>
-                </div>
+                <AnimatedTooltip items={icons}  />
             </header>
             {/* labor	 */}
             <Separator className="w-[80vw] text-center" />
