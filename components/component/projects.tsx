@@ -294,7 +294,7 @@ export function Projects() {
                                                     </li>
                                                     <li>
                                                         <Link
-                                                            href="https://yuxuanize-e-comm.vercel.app/"
+                                                            href="https://unddd.yuxuanize.com/"
                                                             target="_blank"
                                                             scroll={false}
                                                             className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100 cursor-not-allowed"
@@ -391,7 +391,7 @@ export function Projects() {
                                                 <ul className="flex flex-col items-start justify-center pl-5 space-y-5">
                                                     <li>
                                                         <Link
-                                                            href="https://github.com/ppalladio/fullstack-booking-website"
+                                                            href="https://bookin-demo.yuxuanize.com/"
                                                             target="_blank"
                                                             scroll={false}
                                                             className="flex flex-row justify-center items-center gap-2 text-lg text-slate-100"
