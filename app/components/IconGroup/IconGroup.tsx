@@ -1,3 +1,5 @@
+'use client';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { CiLinkedin, CiMail } from 'react-icons/ci';
 import { FiGithub } from 'react-icons/fi';
@@ -5,17 +7,17 @@ import { FiGithub } from 'react-icons/fi';
 interface Props {}
 const IconGroup = (props: Props) => {
     return (
-        <div className="flex flex-row items-center justify-center ">
-            <Link href={''}>
+        <motion.div className="flex flex-row items-center justify-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.5 }}>
+            <Link href={'https://www.linkedin.com/in/yuxuanp/'}>
                 <CiLinkedin size={50} className="hover:text-purple-700 hover:ease-in-out  transition duration-300" />
             </Link>
-            <Link href={''} className="mx-5">
+            <Link href={'https://github.com/ppalladio'} className="mx-5">
                 <FiGithub size={40} className="hover:text-yellow-400/95 hover:ease-in-out  transition duration-300" />
             </Link>
             <a href={`mailto:yuxuan.peng@pm.me`}>
                 <CiMail size={50} className="hover:text-purple-700 hover:ease-in-out  transition duration-300" />
             </a>
-        </div>
+        </motion.div>
     );
 };
 export default IconGroup;

@@ -50,7 +50,7 @@ export const TextHoverEffect = ({ text, duration }: { text: string; duration?: n
                     gradientUnits="userSpaceOnUse"
                     r="20%"
                     animate={maskPosition}
-                    transition={{ duration: duration ?? 0, ease: 'easeOut' }}
+                    transition={{ duration: duration ?? 0, ease: 'easeInOut' }}
 
                     // example for a smoother animation below
 
