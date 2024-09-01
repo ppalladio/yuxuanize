@@ -11,10 +11,10 @@ interface ProjectCardProps {
     imageUrl: string | '';
     buttonText: string[];
     techStackIcons?: IconType[];
-    link?: string;
+    links: string[];
     className?: string;
 }
-const ProjectCard: React.FC<ProjectCardProps> = ({ header, description, imageUrl, buttonText, className, link, techStackIcons }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ header, description, imageUrl, buttonText, className, links, techStackIcons }) => {
     return (
         <CardContainer className={'inter-var' + className}>
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
@@ -28,10 +28,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ header, description, imageUrl
                     <Image src={imageUrl} height="1000" width="1000" className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl" alt="thumbnail" />
                 </CardItem>
                 <div className="flex justify-between items-center mt-20">
-                    {buttonText.map((item, index) => (
-                        <Link href={`${link}`} key={index} target="_blank">
+                    {links.map((link, index) => (
+                        <Link href={link} key={index} target="_blank">
                             <CardItem translateZ={20} as="button" className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold">
-                                {item}
+                                {buttonText[index] || `Button ${index + 1}`}
                             </CardItem>
                         </Link>
                     ))}

@@ -16,14 +16,14 @@ const shadows_into_light = Shadows_Into_Light({ weight: '400', subsets: ['latin'
 const wordColor = ['#8a4491', '#4B556C', '#305443', '#70801E', '#A97F23'];
 const Hero = () => {
     return (
-        <div className="h-screen pt-20 ">
-            <div className="flex flex-col justify-stretch items-center">
-                <TextHoverEffect text="Yuxuan" />
+        <div className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            <div className="w-full max-w-7xl mx-auto flex flex-col items-center ">
+			<TextHoverEffect text="Yuxuan" />
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
-                    className="w-[80%] flex items-stretch text-[20px] lg:text-[60px] mt-[-2rem] lg:mt-[-6rem] font-semibold"
+                    className="w-[80%] flex flex-row items-start relative text-[20px] lg:text-[60px] mt-[-2rem] lg:mt-[-6rem] font-semibold"
                 >
                     <FlipWords words={words} wordFont={[jetBrains_mono, pirata_one, shadows_into_light, dancing_script, pacifico]} wordColor={wordColor} />
                 </motion.div>
