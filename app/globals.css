@@ -123,10 +123,10 @@ html {
     display: block;
     width: 1.5vw;
     height: 1.5vw;
-    border-bottom: 5px solid rgb(118, 84, 127);
-    border-right: 5px solid rgb(118, 84, 127);
+    border-bottom: 5px solid #fc8803;
+    border-right: 5px solid #fc8803;
     transform: rotate(45deg);
-    animation: animate 2s infinite;
+    animation: animate 2s ease  infinite;
 }
 
 .arrow span:nth-child(2) {

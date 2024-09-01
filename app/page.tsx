@@ -1,69 +1,76 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback, lazy } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Projects from './components/Projects/Projects';
 import ScrollArrow from './components/ScrollArrow/ScrollArrow';
+import { Fan, Flower, Sparkle } from 'lucide-react';
+import Footer from './components/Footer/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
-
+const sections = [lazy(() => import('./components/Hero/Hero')), lazy(() => import('./components/About/About')), lazy(() => import('./components/Projects/Projects'))];
 export default function Home() {
     const masterWrapRef = useRef(null);
     const panelWrapRef = useRef(null);
     const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
     const dotsRef = useRef<(HTMLDivElement | SVGSVGElement | null)[]>([]);
     const [activeSlide, setActiveSlide] = useState(0);
+    const [isScrolling, setIsScrolling] = useState(false);
 
-    useEffect(() => {
-        const slides = slidesRef.current;
-        const container = panelWrapRef.current;
-        const dots = dotsRef.current;
-        let offsets: number[] = [];
-
-        if (!slides || !container) return;
-
-        // Set initial styles for each slide
-        slides.forEach((slide, index) => {
-            if (slide) {
-                offsets.push(-slide.offsetTop);
+    const updateActiveSlide = useCallback((index: number) => {
+        setActiveSlide(index);
+        dotsRef.current.forEach((dot, i) => {
+            if (dot) {
+                if (i === index) {
+                    dot.setAttribute('class', 'dot fill-purple-400 stroke-yellow-600 stroke-[2px] ');
+                } else {
+                    dot.setAttribute('class', 'dot stroke-black stroke-[2px]  fill-white');
+                }
             }
         });
+    }, []);
 
-        // Function to update active slide
-        const updateActiveSlide = (index: number) => {
-            setActiveSlide(index);
-            dots.forEach((dot, i) => {
-                if (dot) {
-                    if (i === index) {
-                        dot.setAttribute('class', 'dot fill-purple-400 stroke-yellow-600 stroke-[2px] ');
-                    } else {
-                        dot.setAttribute('class', 'dot stroke-black stroke-[2px]  fill-white');
-                    }
-                }
-            });
-        };
-
-        // Function to animate to a specific slide
-        const goToSlide = (index: number) => {
-            gsap.to(container, {
+    const goToSlide = useCallback(
+        (index: number) => {
+            if (isScrolling || !panelWrapRef.current) return;
+            setIsScrolling(true);
+            const offsets = slidesRef.current.map((slide) => (slide ? -slide.offsetTop : 0));
+            gsap.to(panelWrapRef.current, {
                 duration: 0.6,
                 y: offsets[index],
                 ease: 'power2.inOut',
-                onComplete: () => updateActiveSlide(index),
+                onComplete: () => {
+                    updateActiveSlide(index);
+                    setIsScrolling(false);
+                },
             });
+        },
+        [isScrolling, updateActiveSlide],
+    );
+
+    useEffect(() => {
+        const handleWheel = (e: WheelEvent) => {
+            e.preventDefault();
+            if (isScrolling) return;
+            const direction = e.deltaY > 0 ? 1 : -1;
+            const newIndex = Math.max(0, Math.min(slidesRef.current.length - 1, activeSlide + direction));
+            if (newIndex !== activeSlide) {
+                goToSlide(newIndex);
+            }
         };
 
-        // Add click event listeners to dots
-        dots.forEach((dot, index) => {
-            if (dot) {
-                dot.addEventListener('click', () => goToSlide(index));
-            }
-        });
+        window.addEventListener('wheel', handleWheel, { passive: false });
 
-        // Set up scroll trigger for each slide
-        slides.forEach((slide, index) => {
+        return () => {
+            window.removeEventListener('wheel', handleWheel);
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        };
+    }, [activeSlide, isScrolling, goToSlide]);
+
+    useEffect(() => {
+        slidesRef.current.forEach((slide, index) => {
             if (slide) {
                 ScrollTrigger.create({
                     trigger: slide,
@@ -74,31 +81,13 @@ export default function Home() {
                 });
             }
         });
-
-        // Handle wheel events for smooth scrolling
-        const handleWheel = (e: WheelEvent) => {
-            e.preventDefault();
-            const direction = e.deltaY > 0 ? 1 : -1;
-            const newIndex = Math.max(0, Math.min(slides.length - 1, activeSlide + direction));
-            if (newIndex !== activeSlide) {
-                goToSlide(newIndex);
-            }
-        };
-
-        window.addEventListener('wheel', handleWheel, { passive: false });
-
-        // Cleanup
-        return () => {
-            window.removeEventListener('wheel', handleWheel);
-            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-        };
-    }, [activeSlide]);
+    }, [updateActiveSlide]);
 
     return (
         <div id="masterWrap" ref={masterWrapRef}>
             <div className="paperOverlay"></div>
             <div id="panelWrap" ref={panelWrapRef}>
-                {[Hero, About, Projects].map((Component, index) => (
+                {sections.map((Component, index) => (
                     <section
                         key={index}
                         ref={(el: HTMLDivElement | null) => {
@@ -107,8 +96,8 @@ export default function Home() {
                         className="relative h-screen"
                     >
                         <Component />
-                        {index === [Hero, About, Projects].length - 1 ? (
-                            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-lg font-semibold text-red-500">- End -</div>
+                        {index === sections.length - 1 ? (
+                         <Footer/>
                         ) : (
                             <ScrollArrow />
                         )}
@@ -116,7 +105,7 @@ export default function Home() {
                 ))}
             </div>
             <div className="dots">
-                {[Hero, About, Projects].map((_, index) => (
+                {sections.map((_, index) => (
                     <svg
                         key={index}
                         width="16"
