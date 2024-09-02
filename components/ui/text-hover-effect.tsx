@@ -50,15 +50,15 @@ export const TextHoverEffect = ({ text, duration }: { text: string; duration?: n
                     gradientUnits="userSpaceOnUse"
                     r="20%"
                     animate={maskPosition}
-                    transition={{ duration: duration ?? 0, ease: 'easeInOut' }}
+                    // transition={{ duration: duration ?? 0, ease: 'easeInOut' }}
 
                     // example for a smoother animation below
 
-                    //   transition={{
-                    //     type: "spring",
-                    //     stiffness: 300,
-                    //     damping: 50,
-                    //   }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 50,
+                      }}
                 >
                     <stop offset="0%" stopColor="white" />
                     <stop offset="100%" stopColor="black" />
@@ -91,7 +91,7 @@ export const TextHoverEffect = ({ text, duration }: { text: string; duration?: n
                     strokeDasharray: 1000,
                 }}
                 transition={{
-                    duration: 4,
+                    duration: 2,
                     ease: 'easeInOut',
                 }}
             >

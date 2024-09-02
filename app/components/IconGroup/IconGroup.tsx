@@ -7,7 +7,7 @@ import { FiGithub } from 'react-icons/fi';
 interface Props {}
 const IconGroup = (props: Props) => {
     return (
-        <motion.div className="flex flex-row items-center justify-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.5 }}>
+        <motion.div className="flex flex-row items-center justify-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}>
             <Link href={'https://www.linkedin.com/in/yuxuanp/'} target="_blank">
                 <CiLinkedin size={50} className="hover:text-purple-700 hover:ease-in-out  transition duration-300" />
             </Link>

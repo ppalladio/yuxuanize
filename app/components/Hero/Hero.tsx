@@ -18,11 +18,11 @@ const Hero = () => {
     return (
         <div className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-7xl mx-auto flex flex-col items-center ">
-			<TextHoverEffect text="Yuxuan" />
+                <TextHoverEffect text="Yuxuan" />
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
                     className="w-[80%] flex flex-row items-start relative text-[20px] lg:text-[60px] mt-[-2rem] lg:mt-[-6rem] font-semibold"
                 >
                     <FlipWords words={words} wordFont={[jetBrains_mono, pirata_one, shadows_into_light, dancing_script, pacifico]} wordColor={wordColor} />

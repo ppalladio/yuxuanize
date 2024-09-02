@@ -2,11 +2,9 @@
 import { useEffect, useRef, useState, useCallback, lazy } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Hero from './components/Hero/Hero';
-import About from './components/About/About';
-import Projects from './components/Projects/Projects';
+
 import ScrollArrow from './components/ScrollArrow/ScrollArrow';
-import { Fan, Flower, Sparkle } from 'lucide-react';
+
 import Footer from './components/Footer/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
