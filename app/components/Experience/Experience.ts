@@ -1,7 +1,8 @@
-import { Sizes, Time } from '@/lib/three-utils';
+import { Assets, Resources, Sizes, Time } from '@/lib/three-utils';
 import * as THREE from 'three';
 import Camera from '@/app/components/SceneSettings/Camera';
 import Renderer from '../SceneSettings/Renderer';
+import World from '../SceneSettings/World/World';
 export default class Experience {
     private static instance: Experience;
     public sizes!: Sizes;
@@ -9,6 +10,8 @@ export default class Experience {
     public camera!: Camera;
     public renderer!: Renderer;
     public time!: Time;
+    public world!: World;
+    public resources!: Resources;
     constructor(public canvas: HTMLCanvasElement) {
         if (Experience.instance) {
             return Experience.instance;
@@ -20,6 +23,8 @@ export default class Experience {
         this.camera = new Camera(this);
         this.renderer = new Renderer(this);
         this.time = new Time();
+        this.world = new World(this);
+        this.resources = new Resources(Assets, this);
         this.time.on('time update', () => this.update());
         this.time.on('resize', () => this.resize());
         this.update();

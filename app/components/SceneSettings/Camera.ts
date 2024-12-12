@@ -23,6 +23,8 @@ export default class Camera {
     public createPerspectiveCamera() {
         this.perspectiveCamera = new THREE.PerspectiveCamera(35, this.sizes.aspect, 0.1, 100);
         this.scene.add(this.perspectiveCamera);
+		// temp setting of cam angle 
+		this.perspectiveCamera.position.set(0, 0, 5);
     }
     public createOrthographicCamera() {
         this.frustum = 5;

@@ -1,5 +1,18 @@
+import Experience from '@/app/components/Experience/Experience';
+import Renderer from '@/app/components/SceneSettings/Renderer';
 import EventEmitter from 'events';
 
+const Assets: Asset[] = [
+    {
+        name: 'room',
+        type: 'glbModel',
+        path: '/public/webIso/webiso.glb',
+    },
+    {
+        name: 'screen',
+        type: 'videoTexture',
+    },
+];
 class Sizes extends EventEmitter {
     public width: number;
     public height: number;
@@ -48,4 +61,24 @@ class Time extends EventEmitter {
         window.requestAnimationFrame(() => this.update());
     };
 }
-export { Sizes, Time };
+
+interface Asset {
+    name: string;
+    type: string;
+    path?: string;
+}
+
+class Resources extends EventEmitter {
+    public renderer!: Renderer;
+    public assets: Asset[];
+    public experience: Experience;
+
+    constructor(assets: Asset[], experience: Experience) {
+        super();
+        this.experience = experience;
+        this.renderer = this.experience.renderer;
+        this.assets = assets;
+        // console.log('assets', this.assets);
+    }
+}
+export { Sizes, Time, Assets, Resources };
