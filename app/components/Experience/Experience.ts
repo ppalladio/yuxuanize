@@ -23,10 +23,10 @@ export default class Experience {
         this.camera = new Camera(this);
         this.renderer = new Renderer(this);
         this.time = new Time();
-        this.world = new World(this);
         this.resources = new Resources(Assets, this);
+        this.world = new World(this);
         this.time.on('time update', () => this.update());
-        this.time.on('resize', () => this.resize());
+        this.sizes.on('resize', () => this.resize());
         this.update();
     }
     public update() {
