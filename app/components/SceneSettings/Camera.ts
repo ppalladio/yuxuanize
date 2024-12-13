@@ -1,8 +1,9 @@
 import { Sizes } from '@/lib/three-utils';
 import Experience from '../Experience/Experience';
 import * as THREE from 'three';
-
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
 export default class Camera {
+	public controls!: OrbitControls;
     public sizes: Sizes;
     public scene: THREE.Scene;
     public canvas: HTMLCanvasElement;
@@ -14,24 +15,43 @@ export default class Camera {
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
-        console.log('camera logs', this.sizes, this.scene, this.canvas);
-        this.createOrthographicCamera();
+        
+        // Create cameras first
         this.createPerspectiveCamera();
+        this.createOrthographicCamera();
+        
+        // Set up controls after cameras exist
+        this.setOrbitControl();
+        
         this.resize();
         this.update();
     }
+
     public createPerspectiveCamera() {
         this.perspectiveCamera = new THREE.PerspectiveCamera(35, this.sizes.aspect, 0.1, 100);
+        this.perspectiveCamera.position.set(0, 0, 5);
         this.scene.add(this.perspectiveCamera);
-		// temp setting of cam angle 
-		this.perspectiveCamera.position.set(0, 0, 5);
     }
+
     public createOrthographicCamera() {
         this.frustum = 5;
-        this.orthographicCamera = new THREE.OrthographicCamera((-this.sizes.aspect * this.frustum) / 2, (this.sizes.aspect * this.frustum) / 2, this.frustum / 2, -this.frustum / 2, -100, 100);
-        // potential for this.sizes.frustum
+        this.orthographicCamera = new THREE.OrthographicCamera(
+            (-this.sizes.aspect * this.frustum) / 2,
+            (this.sizes.aspect * this.frustum) / 2,
+            this.frustum / 2,
+            -this.frustum / 2,
+            -100,
+            100
+        );
         this.scene.add(this.orthographicCamera);
     }
+
+    private setOrbitControl() {
+        this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
+        this.controls.enableDamping = true;
+        this.controls.enableZoom = true;
+    }
+
     public resize() {
         this.perspectiveCamera.aspect = this.sizes.aspect;
         this.perspectiveCamera.updateProjectionMatrix();
@@ -41,5 +61,7 @@ export default class Camera {
         this.orthographicCamera.bottom = -this.frustum / 2;
         this.orthographicCamera.updateProjectionMatrix();
     }
-    public update() {}
+    public update() {
+		this.controls.update()
+	}
 }

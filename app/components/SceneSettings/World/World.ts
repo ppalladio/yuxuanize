@@ -3,9 +3,11 @@ import Experience from '../../Experience/Experience';
 import Room from './Room';
 import { Resources, Sizes } from '@/lib/three-utils';
 import Camera from '../Camera';
+import Env from './Env';
 
 export default class World {
     public experience: Experience;
+	public environment!: Env;
     public room!: Room;
     public resources: Resources;
 	public camera: Camera;
@@ -18,6 +20,7 @@ export default class World {
         this.camera = this.experience.camera;
         this.resources = this.experience.resources;
         this.resources.on('ready', () => {
+			this.environment = new Env(experience);
             this.room = new Room(experience);
 			console.log("world created")
         });
