@@ -31,10 +31,12 @@ export default class Experience {
     }
     public update() {
         this.camera.update();
+        this.world.update();
         this.renderer.update();
     }
     public resize() {
         this.renderer.resize();
         this.camera.resize();
+        this.world.resize();
     }
 }

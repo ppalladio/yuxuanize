@@ -147,9 +147,7 @@ class Resources extends EventEmitter {
     public assetInfo(asset: Asset, file: GLTF | THREE.VideoTexture) {
         this.items[asset.name] = file;
         this.assetLoaded++;
-        console.log('asset loading');
         if (this.assetLoaded === this.queue) {
-            console.log('finish loading');
             this.emit('ready');
         }
     }

@@ -27,6 +27,39 @@ export default class Room {
         this.setModel();
     }
     setModel() {
+        this.roomObject.children.forEach((child) => {
+            child.castShadow = true;
+            child.receiveShadow = true;
+
+            if (child instanceof THREE.Group) {
+                child.children.forEach((groupChild) => {
+                    groupChild.castShadow = true;
+                    groupChild.receiveShadow = true;
+                });
+            }
+
+            if (child.name === 'screen') {
+                (child as THREE.Mesh).material = new THREE.MeshBasicMaterial({
+                    map: this.resources.items.screen,
+                });
+            }
+            if (child.name === 'walkwayGlass') {
+                // console.log(`${child.name} position:`, {
+                // 	x: child.position.x,
+                // 	y: child.position.y,
+                // 	z: child.position.z
+                // });
+                (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
+                    emissive: 'white',
+                    roughness: 0,
+                    transmission: 1,
+                    opacity: 0.5,
+                    emissiveIntensity: 1,
+                });
+            }
+        });
+        this.roomObject.scale.set(0.3, 0.3, 0.3);
         this.scene.add(this.roomObject);
     }
+	public update() {}
 }
