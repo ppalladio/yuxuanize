@@ -10,7 +10,7 @@ export default class Camera {
     public perspectiveCamera!: THREE.PerspectiveCamera;
     public orthographicCamera!: THREE.OrthographicCamera;
     public frustum!: number;
-
+    public helper!: THREE.CameraHelper;
     constructor(private experience: Experience) {
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
@@ -29,18 +29,19 @@ export default class Camera {
 
     public createPerspectiveCamera() {
         this.perspectiveCamera = new THREE.PerspectiveCamera(35, this.sizes.aspect, 0.1, 100);
-        this.perspectiveCamera.position.set(0, 0, 5);
+        this.perspectiveCamera.position.set(0.6, 7, 10);
         this.scene.add(this.perspectiveCamera);
     }
 
     public createOrthographicCamera() {
         this.frustum = 5;
-        this.orthographicCamera = new THREE.OrthographicCamera((-this.sizes.aspect * this.frustum) / 2, (this.sizes.aspect * this.frustum) / 2, this.frustum / 2, -this.frustum / 2, -100, 100);
-        const size = 10;
-        const division = 10;
+        this.orthographicCamera = new THREE.OrthographicCamera((-this.sizes.aspect * this.frustum) / 2, (this.sizes.aspect * this.frustum) / 2, this.frustum / 2, -this.frustum / 2, -20, 20);
+        const size = 20;
+        const division = 20;
         const gridHelper = new THREE.GridHelper(size, division);
         const axesHelper = new THREE.AxesHelper(10);
-
+        this.helper = new THREE.CameraHelper(this.orthographicCamera);
+        this.scene.add(this.helper);
         this.scene.add(gridHelper);
         this.scene.add(axesHelper);
         this.scene.add(this.orthographicCamera);
@@ -62,6 +63,12 @@ export default class Camera {
         this.orthographicCamera.updateProjectionMatrix();
     }
     public update() {
+        // console.log(this.perspectiveCamera.position);
+        // console.log(this.orthographicCamera.position);
         this.controls.update();
+        this.helper.matrixWorldNeedsUpdate = true;
+        this.helper.update();
+        this.helper.position.copy(this.orthographicCamera.position);
+        this.helper.rotation.copy(this.orthographicCamera.rotation);
     }
 }

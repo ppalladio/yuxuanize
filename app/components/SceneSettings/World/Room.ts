@@ -2,7 +2,8 @@ import * as THREE from 'three';
 import Experience from '../../Experience/Experience';
 import { Resources } from '@/lib/three-utils';
 import { GLTFParser } from 'three/examples/jsm/loaders/GLTFLoader.js';
-interface RoomProps {
+import gsap from 'gsap';
+export interface RoomProps {
     animation: [];
     assets: {};
     cameras: [];
@@ -15,6 +16,12 @@ export default class Room {
     public experience: Experience;
     public scene: THREE.Scene;
     public resources: Resources;
+    public lerp: {
+        current: number;
+        target: number;
+        ease: number;
+    };
+    public rotation!: number;
     public room: RoomProps;
     public roomObject: THREE.Object3D;
     constructor(experience: Experience) {
@@ -24,7 +31,13 @@ export default class Room {
         this.resources = this.experience.resources;
         this.room = this.resources.items.room;
         this.roomObject = this.room.scene;
+        this.lerp = {
+            current: 0,
+            target: 0,
+            ease: 0.1,
+        };
         this.setModel();
+        this.onMouseMove();
     }
     setModel() {
         this.roomObject.children.forEach((child) => {
@@ -37,7 +50,7 @@ export default class Room {
                     groupChild.receiveShadow = true;
                 });
             }
-
+            // play video
             if (child.name === 'screen') {
                 (child as THREE.Mesh).material = new THREE.MeshBasicMaterial({
                     map: this.resources.items.screen,
@@ -61,5 +74,15 @@ export default class Room {
         this.roomObject.scale.set(0.3, 0.3, 0.3);
         this.scene.add(this.roomObject);
     }
-	public update() {}
+    public onMouseMove() {
+        window.addEventListener('mousemove', (e) => {
+            console.log(e);
+            this.rotation = (e.clientX - window.innerWidth / 2) / window.innerWidth;
+            this.lerp.target = this.rotation;
+        });
+    }
+    public update() {
+        this.lerp.current = gsap.utils.interpolate(this.lerp.current, this.lerp.target, this.lerp.ease);
+        this.roomObject.rotation.y = this.lerp.current;
+    }
 }

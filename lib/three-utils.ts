@@ -1,3 +1,4 @@
+'use client';
 import Experience from '@/app/components/Experience/Experience';
 import Renderer from '@/app/components/SceneSettings/Renderer';
 import EventEmitter from 'events';

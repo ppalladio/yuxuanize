@@ -4,10 +4,12 @@ import Room from './Room';
 import { Resources, Sizes } from '@/lib/three-utils';
 import Camera from '../Camera';
 import Env from './Env';
+import Controls from './Controls';
 
 export default class World {
     public experience: Experience;
     public environment!: Env;
+    public controls!: Controls;
     public room!: Room;
     public resources: Resources;
     public camera: Camera;
@@ -21,11 +23,13 @@ export default class World {
         this.resources = this.experience.resources;
         this.resources.on('ready', () => {
             this.environment = new Env(experience);
+            // this.controls = new Controls(experience);
             this.room = new Room(experience);
         });
     }
     public resize() {}
     public update() {
         if (this.room) this.room.update();
+        if (this.controls) this.controls.update();
     }
 }
