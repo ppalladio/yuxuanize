@@ -44,7 +44,9 @@ export default class Renderer {
         this.renderer.setPixelRatio(this.sizes.pixelRatio);
     }
 
+
     public update() {
-        this.renderer.render(this.scene, this.camera.perspectiveCamera);
+		// change camera type
+        this.renderer.render(this.scene, this.camera.orthographicCamera);
     }
 }

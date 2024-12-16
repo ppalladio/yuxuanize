@@ -5,6 +5,7 @@ import { Resources, Sizes } from '@/lib/three-utils';
 import Camera from '../Camera';
 import Env from './Env';
 import Controls from './Controls';
+import Floor from './Floor';
 
 export default class World {
     public experience: Experience;
@@ -15,6 +16,7 @@ export default class World {
     public camera: Camera;
     public sizes: Sizes;
     public canvas: HTMLCanvasElement;
+	public floor!:Floor
     constructor(experience: Experience) {
         this.experience = experience;
         this.sizes = this.experience.sizes;
@@ -23,7 +25,8 @@ export default class World {
         this.resources = this.experience.resources;
         this.resources.on('ready', () => {
             this.environment = new Env(experience);
-            // this.controls = new Controls(experience);
+			this.floor = new Floor(experience)
+            this.controls = new Controls(experience);
             this.room = new Room(experience);
         });
     }
