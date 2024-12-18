@@ -20,7 +20,7 @@ export default class Camera {
         this.createOrthographicCamera();
 
         // Set up controls after cameras exist
-        this.setOrbitControl();
+        // this.setOrbitControl();
 
         this.resize();
         this.update();
@@ -50,11 +50,11 @@ export default class Camera {
         this.scene.add(this.orthographicCamera);
     }
 
-    private setOrbitControl() {
-        this.controls = new OrbitControls(this.orthographicCamera, this.canvas);
-        this.controls.enableDamping = true;
-        this.controls.enableZoom = true;
-    }
+    // private setOrbitControl() {
+    //     // this.controls = new OrbitControls(this.orthographicCamera, this.canvas);
+    //     // this.controls.enableDamping = true;
+    //     // this.controls.enableZoom = true;
+    // }
 
     public resize() {
         // this.perspectiveCamera.aspect = this.sizes.aspect;
@@ -66,6 +66,6 @@ export default class Camera {
         this.orthographicCamera.updateProjectionMatrix();
     }
     public update() {
-        this.controls.update();
+        // this.controls.update();
     }
 }

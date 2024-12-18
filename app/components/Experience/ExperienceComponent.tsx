@@ -18,5 +18,5 @@ export default function ExperienceComponent() {
         }
     }, []);
 
-    return <canvas ref={canvasRef} />;
+    return <canvas className="w-full h-full" ref={canvasRef} />;
 }
