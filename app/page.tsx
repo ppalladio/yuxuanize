@@ -23,7 +23,7 @@ export default function Home() {
                             </div>
                         </div>
                     </section>
-                    <div className="h-[2000px]"></div>
+                    <div className="h-[2000px] first-move"></div>
                     <section className="first-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-400 mr-0 rounded-tr-[200px] rounded-br-[0px]">
                         <div className="section-intro-wrapper ">
                             <span className="text-red-600">About</span>

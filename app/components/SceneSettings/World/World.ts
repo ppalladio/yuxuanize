@@ -24,10 +24,10 @@ export default class World {
         this.camera = this.experience.camera;
         this.resources = this.experience.resources;
         this.resources.on('ready', () => {
-            this.environment = new Env(experience);
-			this.floor = new Floor(experience)
-            this.controls = new Controls(experience);
             this.room = new Room(experience);
+            this.environment = new Env(experience);
+            this.floor = new Floor(experience);
+            this.controls = new Controls(experience);
         });
     }
     public resize() {}

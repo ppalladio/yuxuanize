@@ -1,8 +1,11 @@
 import * as THREE from 'three';
 import Experience from '../../Experience/Experience';
 import { Resources, Sizes, Time } from '@/lib/three-utils';
-
+import GSAP from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 import Camera from '../Camera';
+
+GSAP.registerPlugin(ScrollTrigger);
 
 export default class Controls {
     public experience: Experience;
@@ -10,7 +13,8 @@ export default class Controls {
     public sizes: Sizes;
     public resources: Resources;
     public time: Time;
-
+    public tl!: any;
+    public room!: THREE.Object3D;
     public camera: Camera;
 
     constructor(experience: Experience) {
@@ -19,10 +23,24 @@ export default class Controls {
         this.sizes = this.experience.sizes;
         this.resources = this.experience.resources;
         this.time = this.experience.time;
+        this.room = this.experience.world.room.roomObject;
         this.camera = this.experience.camera;
-
-    
+        this.setPath();
     }
 
+    setPath() {
+        console.log(this.room);
+        this.tl = GSAP.timeline();
+        this.tl.to(this.room.position, {
+            x: 0.5,
+            scrollTrigger: {
+                trigger: '.first-move',
+                markers: true,
+                start: 'top',
+                end: 'bottom bottom',
+                scrub: 1,
+            },
+        });
+    }
     public update() {}
 }
