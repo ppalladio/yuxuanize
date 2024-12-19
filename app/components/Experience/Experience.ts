@@ -3,8 +3,10 @@ import * as THREE from 'three';
 import Camera from '@/app/components/SceneSettings/Camera';
 import Renderer from '../SceneSettings/Renderer';
 import World from '../SceneSettings/World/World';
+import Theme from '../SceneSettings/World/Theme';
 export default class Experience {
     private static instance: Experience;
+	public theme!: Theme;
     public sizes!: Sizes;
     public scene!: THREE.Scene;
     public camera!: Camera;
@@ -18,6 +20,7 @@ export default class Experience {
         }
 
         Experience.instance = this;
+		this.theme = new Theme();
         this.scene = new THREE.Scene();
         this.sizes = new Sizes();
         this.camera = new Camera(this);

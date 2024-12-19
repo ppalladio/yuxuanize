@@ -1,7 +1,8 @@
 'use client';
 
+import { Switch } from '@/components/ui/switch';
 import ExperienceComponent from './components/Experience/ExperienceComponent';
-
+import { Sun, Moon } from 'lucide-react';
 export default function Home() {
     return (
         <main className="">
@@ -9,6 +10,16 @@ export default function Home() {
                 <ExperienceComponent />
             </div>
             <div className="w-full h-full z-30 " data-test-id>
+                <div className="fixed flex-row-center top-10 right-10 z-40">
+                    <div className="flex-row-center ">
+                        <Sun />
+                    </div>
+                    <Switch className='toggle-button'/>
+
+                    <div className="moon-wrapper">
+                        <Moon />
+                    </div>
+                </div>
                 <div className="relative">
                     <section className=" w-full h-full">
                         <div className="hero-wrapper">

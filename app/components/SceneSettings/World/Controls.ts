@@ -4,6 +4,7 @@ import { Resources, Sizes, Time } from '@/lib/three-utils';
 import GSAP from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import Camera from '../Camera';
+import { invalidate } from '@react-three/fiber';
 
 GSAP.registerPlugin(ScrollTrigger);
 
@@ -29,16 +30,20 @@ export default class Controls {
     }
 
     setPath() {
-        console.log(this.room);
+        // console.log(this.room);
         this.tl = GSAP.timeline();
         this.tl.to(this.room.position, {
-            x: 0.5,
+            x: () => {
+                return this.sizes.width * 0.002;
+            },
             scrollTrigger: {
                 trigger: '.first-move',
                 markers: true,
                 start: 'top',
                 end: 'bottom bottom',
                 scrub: 1,
+                // TODO : Check model responsiveness on screen resize
+                // invalidateOnRefresh: true
             },
         });
     }
