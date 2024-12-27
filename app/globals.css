@@ -110,6 +110,7 @@ html {
     padding: 20% 5%;
     border-bottom: 2px solid #ffffff;
     padding-bottom: 400px;
+	@apply dark:border-green-400
 }
 
 .section-intro-wrapper:nth-child(3) {

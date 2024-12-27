@@ -34,16 +34,9 @@ export default class Env {
         this.scene.add(this.ambientLight);
     }
     public switchTheme(theme: string) {
-        console.log(theme, this.sunlight);
+        // console.log(theme, this.sunlight);
+        // TODO change lightning when switch theme 5:16:00
         if (theme === 'dark') {
-            GSAP.to(this.sunlight, {
-                intensity: 0,
-                onComplete: () => {
-                    console.log(this.sunlight);
-                    this.scene.remove(this.sunlight);
-                    this.sunlight = null!;
-                },
-            });
             GSAP.to(this.sunlight.color, { r: 0 / 255, g: 0 / 255, b: 0 / 255 });
             GSAP.to(this.ambientLight.color, { r: 0 / 255, g: 0 / 255, b: 0 / 255 });
 

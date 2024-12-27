@@ -13,6 +13,8 @@ export default class Theme extends EventEmitter {
     setEventListeners() {
         this.toggleButton.addEventListener('click', () => {
             this.theme = this.toggleButton.getAttribute('data-state') === 'checked' ? 'light' : 'dark';
+            document.body.classList.toggle('dark-theme');
+            document.body.classList.toggle('light-theme');
             this.emit('switch', this.theme);
         });
     }
