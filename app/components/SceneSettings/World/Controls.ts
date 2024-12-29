@@ -16,6 +16,10 @@ export default class Controls {
     public time: Time;
     public tl!: any;
     public room!: THREE.Object3D;
+    public firstMoveTimeline!: gsap.core.Timeline;
+    public secondMoveTimeline!: gsap.core.Timeline;
+    public thirdMoveTimeline!: gsap.core.Timeline;
+
     public camera: Camera;
 
     constructor(experience: Experience) {
@@ -26,24 +30,85 @@ export default class Controls {
         this.time = this.experience.time;
         this.room = this.experience.world.room.roomObject;
         this.camera = this.experience.camera;
-        this.setPath();
+        this.setScrollTrigger();
     }
 
-    setPath() {
-        // console.log(this.room);
-        this.tl = GSAP.timeline();
-        this.tl.to(this.room.position, {
-            x: () => {
-                return this.sizes.width * 0.002;
+    setScrollTrigger() {
+        // TODO deprecation warning
+        ScrollTrigger.matchMedia({
+            '(min-width: 960px)': () => {
+                console.log('desktop');
+                // first section
+                this.firstMoveTimeline = GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: '.first-move',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    },
+                });
+                this.firstMoveTimeline.to(this.room.position, {
+                    x: () => {
+                        console.log(this.room.position);
+                        return this.sizes.width * 0.002;
+                    },
+                });
+                // second section tl
+                // TODO adjust the height so the move would be slower
+
+                this.secondMoveTimeline = GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: '.second-move',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    },
+                })
+                    .to(
+                        this.room.position,
+                        {
+                            x: () => {
+                                // console.log(this.room.position);
+                                return 1;
+                            },
+
+                            z: () => {
+                                return this.sizes.height * 0.005;
+                            },
+                        },
+                        'same',
+                    )
+                    .to(
+                        this.room.scale,
+                        {
+                            x: 1.1,
+                            y: 1.1,
+                            z: 1.1,
+                        },
+                        'same',
+                    );
+                // third section tl
+
+                this.thirdMoveTimeline = GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: '.third-move',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    },
+                }).to(this.camera.orthographicCamera.position, {
+					y: 1.5,
+                    x: () => {
+                        return this.sizes.width * 0.002;
+                    },
+                }); 
             },
-            scrollTrigger: {
-                trigger: '.first-move',
-                markers: true,
-                start: 'top',
-                end: 'bottom bottom',
-                scrub: 1,
-                // TODO : Check model responsiveness on screen resize
-                // invalidateOnRefresh: true
+            // hide model on scroll
+            '(max-width: 960px)': () => {
+                console.log('mobile');
             },
         });
     }

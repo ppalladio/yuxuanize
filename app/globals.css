@@ -110,16 +110,24 @@ html {
     padding: 20% 5%;
     border-bottom: 2px solid #ffffff;
     padding-bottom: 400px;
-	@apply dark:border-green-400
+    @apply dark:border-green-400;
 }
 
 .section-intro-wrapper:nth-child(3) {
     border-bottom: 2px solid #ffffff;
 }
 
-.section-number{
-	position: absolute;
-	bottom: 15px;
-	right: 0;
-	font-size: 24px;
-  }
+.section-number {
+    position: absolute;
+    bottom: 15px;
+    right: 0;
+    font-size: 24px;
+}
+
+@media (max-width: 960px) {
+    .first-section,
+    .section-section,
+    .third-section {
+        @apply w-full;
+    }
+}
