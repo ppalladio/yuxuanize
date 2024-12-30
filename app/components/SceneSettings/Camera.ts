@@ -1,3 +1,4 @@
+'use client';
 import { Sizes } from '@/lib/three-utils';
 import Experience from '../Experience/Experience';
 import * as THREE from 'three';

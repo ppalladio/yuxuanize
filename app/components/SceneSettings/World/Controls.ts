@@ -19,8 +19,10 @@ export default class Controls {
     public firstMoveTimeline!: gsap.core.Timeline;
     public secondMoveTimeline!: gsap.core.Timeline;
     public thirdMoveTimeline!: gsap.core.Timeline;
-
     public camera: Camera;
+
+    public screenMesh!: THREE.Object3D | null;
+    public vinylPlayerMesh!: THREE.Object3D | null;
 
     constructor(experience: Experience) {
         this.experience = experience;
@@ -31,13 +33,15 @@ export default class Controls {
         this.room = this.experience.world.room.roomObject;
         this.camera = this.experience.camera;
         this.setScrollTrigger();
+
+        this.screenMesh = this.experience.world.room.getMesh('screen');
+        this.vinylPlayerMesh = this.experience.world.room.getMesh('player_glass');
     }
 
     setScrollTrigger() {
         // TODO deprecation warning
         ScrollTrigger.matchMedia({
             '(min-width: 960px)': () => {
-                console.log('desktop');
                 // first section
                 this.firstMoveTimeline = GSAP.timeline({
                     scrollTrigger: {
@@ -47,11 +51,9 @@ export default class Controls {
                         scrub: 0.6,
                         invalidateOnRefresh: true,
                     },
-                });
-                this.firstMoveTimeline.to(this.room.position, {
+                }).to(this.camera.orthographicCamera.position, {
                     x: () => {
-                        console.log(this.room.position);
-                        return this.sizes.width * 0.002;
+                        return this.sizes.width * -0.002;
                     },
                 });
                 // second section tl
@@ -70,12 +72,10 @@ export default class Controls {
                         this.room.position,
                         {
                             x: () => {
-                                // console.log(this.room.position);
-                                return 1;
+                                return -2.5;
                             },
-
                             z: () => {
-                                return this.sizes.height * 0.005;
+                                return this.sizes.height * 0.007;
                             },
                         },
                         'same',
@@ -83,12 +83,13 @@ export default class Controls {
                     .to(
                         this.room.scale,
                         {
-                            x: 1.1,
-                            y: 1.1,
-                            z: 1.1,
+                            x: 1.4,
+                            y: 1.4,
+                            z: 1.4,
                         },
                         'same',
                     );
+
                 // third section tl
 
                 this.thirdMoveTimeline = GSAP.timeline({
@@ -99,12 +100,10 @@ export default class Controls {
                         scrub: 0.6,
                         invalidateOnRefresh: true,
                     },
-                }).to(this.camera.orthographicCamera.position, {
-					y: 1.5,
-                    x: () => {
-                        return this.sizes.width * 0.002;
-                    },
-                }); 
+                }).to(this.room.position, {
+					x:-5.5,
+                    z: 10,
+                });
             },
             // hide model on scroll
             '(max-width: 960px)': () => {
