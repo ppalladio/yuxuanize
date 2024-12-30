@@ -23,6 +23,8 @@ export default class Controls {
 
     public screenMesh!: THREE.Object3D | null;
     public vinylPlayerMesh!: THREE.Object3D | null;
+    public vinylRecord!: THREE.Object3D | null;
+    public vinylRecordLabel!: THREE.Object3D | null;
 
     constructor(experience: Experience) {
         this.experience = experience;
@@ -36,6 +38,9 @@ export default class Controls {
 
         this.screenMesh = this.experience.world.room.getMesh('screen');
         this.vinylPlayerMesh = this.experience.world.room.getMesh('player_glass');
+        this.vinylRecord = this.experience.world.room.getMesh('vinyl_record');
+
+        this.vinylRecordLabel = this.experience.world.room.getMesh('vinyl_record')!.children[0];
     }
 
     setScrollTrigger() {
@@ -100,10 +105,25 @@ export default class Controls {
                         scrub: 0.6,
                         invalidateOnRefresh: true,
                     },
-                }).to(this.room.position, {
-					x:-5.5,
-                    z: 10,
-                });
+                })
+                    .to(
+                        this.room.position,
+                        {
+                            x: -8,
+                            z: 15,
+                        },
+                        'same',
+                    )
+                    .to(
+                        this.room.scale,
+                        {
+                            x: 2,
+                            y: 2,
+                            z: 2,
+                        },
+                        'same',
+                    )
+                     
             },
             // hide model on scroll
             '(max-width: 960px)': () => {

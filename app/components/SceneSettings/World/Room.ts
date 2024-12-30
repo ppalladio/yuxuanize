@@ -66,6 +66,16 @@ export default class Room {
                     anisotropy: 1.0,
                 });
             }
+            if (child.name === 'vinyl_record') {
+		
+                if (child.children[0].name === 'label') (
+					console.log(child.children[0]),
+					child.children[0] as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
+					metalness: 1,
+					color:'red'
+
+				});
+            }
             if (child.name === 'cup') {
                 (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
                     metalness: 0, // non-metallic object
