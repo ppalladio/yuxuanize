@@ -43,63 +43,69 @@ export default class Room {
         this.roomObject.children.forEach((child) => {
             child.castShadow = true;
             child.receiveShadow = true;
-            // console.log(child);
+
             if (child instanceof THREE.Group) {
                 child.children.forEach((groupChild) => {
                     groupChild.castShadow = true;
                     groupChild.receiveShadow = true;
                 });
             }
-            // play video
-            if (child.name === 'screen') {
-                (child as THREE.Mesh).material = new THREE.MeshBasicMaterial({
-                    map: this.resources.items.screen,
-                });
-            }
-            if (child.name === 'player_glass') {
-                (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
-                    metalness: 0, // non-metallic object
-                    roughness: 0, // highly polished surface, can adjust to add frosting
-                    transmission: 1.0, // opacity while maintaining lightning
-                    thickness: 2,
-                    reflectivity: 0,
-                    anisotropy: 1.0,
-                });
-            }
-            if (child.name === 'vinyl_record') {
+
+            switch (child.name) {
+                case 'screen':
+                    (child as THREE.Mesh).material = new THREE.MeshBasicMaterial({
+                        map: this.resources.items.screen,
+                    });
+                    break;
+
+                case 'player_glass':
+                case 'cup':
+                    (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
+                        metalness: 0,
+                        roughness: 0,
+                        transmission: 1.0,
+                        thickness: 2,
+                        reflectivity: 0,
+                        anisotropy: 1.0,
+                    });
+                    break;
+
+                case 'vinyl_record':
+                    if (child.children[0].name === 'label') {
+                        (child.children[0] as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
+                            metalness: 1,
+                            color: 'red',
+                        });
+                    }
+                    break;
+
+                case 'walkway':
+                    child.position.x = 1.20846 ;
+                    child.position.z = 3.5;
 		
-                if (child.children[0].name === 'label') (
-					console.log(child.children[0]),
-					child.children[0] as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
-					metalness: 1,
-					color:'red'
+                    break;
 
-				});
-            }
-            if (child.name === 'cup') {
-                (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
-                    metalness: 0, // non-metallic object
-                    roughness: 0, // highly polished surface, can adjust to add frosting
-                    transmission: 1.0, // opacity while maintaining lightning
-                    thickness: 2,
-                    reflectivity: 0,
-                    anisotropy: 1.0,
-                });
-            }
+                case 'mailbox':
+                case 'tile1':
+                case 'tile2':
+                case 'tile3':
+                case 'tile4':
+                case 'soil':
+                case 'flowers':
+                case 'lamp':
+                case 'lamp_glass':
+                    child.scale.set(0, 0, 0);
+                    break;
 
-            if (child.name === 'walkwayGlass') {
-                // console.log(`${child.name} position:`, {
-                // 	x: child.position.x,
-                // 	y: child.position.y,
-                // 	z: child.position.z
-                // });
-                (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
-                    emissive: 'white',
-                    roughness: 0,
-                    transmission: 1,
-                    opacity: 0.5,
-                    emissiveIntensity: 1,
-                });
+                case 'walkwayGlass':
+                    (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
+                        emissive: 'white',
+                        roughness: 0,
+                        transmission: 1,
+                        opacity: 0.5,
+                        emissiveIntensity: 1,
+                    });
+                    break;
             }
         });
         this.roomObject.scale.set(0.3, 0.3, 0.3);

@@ -11,6 +11,7 @@ export default class Camera {
     public perspectiveCamera!: THREE.PerspectiveCamera;
     public orthographicCamera!: THREE.OrthographicCamera;
     public frustum!: number;
+    public axesHelper!: THREE.AxesHelper;
     constructor(private experience: Experience) {
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
@@ -34,20 +35,21 @@ export default class Camera {
     // }
 
     public createOrthographicCamera() {
-        this.frustum = 5;
+        this.frustum = 10;
         this.orthographicCamera = new THREE.OrthographicCamera(
             (-this.sizes.aspect * this.frustum) / 2,
             (this.sizes.aspect * this.frustum) / 2,
             this.frustum / 2,
             -this.frustum / 2,
-            -20,
-            20,
+            -50,
+            50,
         );
-        this.orthographicCamera.position.y = 4;
-        this.orthographicCamera.position.z = 5;
-        this.orthographicCamera.rotation.x = -Math.PI / 6;
-        this.orthographicCamera.zoom = 0.7;
 
+        this.orthographicCamera.rotation.x = -Math.atan(1 / Math.sqrt(2));
+        this.orthographicCamera.position.set(0, 4.2, 5);
+        // this.orthographicCamera.rotation.x = -Math.PI / 2;
+        // this.orthographicCamera.zoom = 0.1;
+        // this.orthographicCamera.updateProjectionMatrix();
         this.scene.add(this.orthographicCamera);
     }
 
@@ -64,6 +66,11 @@ export default class Camera {
         this.orthographicCamera.right = (this.sizes.aspect * this.frustum) / 2;
         this.orthographicCamera.top = this.frustum / 2;
         this.orthographicCamera.bottom = -this.frustum / 2;
+        if (this.sizes.width > 1000) {
+            this.orthographicCamera.zoom = 2;
+        } else {
+            this.orthographicCamera.zoom = 1;
+        }
         this.orthographicCamera.updateProjectionMatrix();
     }
     public update() {

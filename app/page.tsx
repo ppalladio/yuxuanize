@@ -88,7 +88,33 @@ export default function Home() {
                     {/* third section */}
                     <section className="third-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-400 mr-auto rounded-tr-[200px] rounded-br-[0px] text-green-500">
                         <div className="section-intro-wrapper text-green-500">
-                            <span className=" text-green-500">contact 03</span>
+                            <span className=" text-green-500">third sectiond</span>
+                        </div>
+
+                        <div className="relative px-[10%] py-[5%]">
+                            <h3 className="text-3xl font-bold mt-[5rem] capitalize">heading1</h3>
+                            <p className="text-base mt-4 ">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit pariatur in ratione rem minima officiis perspiciatis
+                                magni iste corrupti sequi, vel iusto nemo fuga itaque id, accusantium adipisci illum soluta?
+                            </p>
+                            <h3 className="text-3xl font-bold mt-[5rem] capitalize">heading2</h3>
+                            <p className="text-base mt-4 ">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit pariatur in ratione rem minima officiis perspiciatis
+                                magni iste corrupti sequi, vel iusto nemo fuga itaque id, accusantium adipisci illum soluta?
+                            </p>
+                            <h3 className="text-3xl font-bold mt-[5rem] capitalize">heading3</h3>
+                            <p className="text-base mt-4 ">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit pariatur in ratione rem minima officiis perspiciatis
+                                magni iste corrupti sequi, vel iusto nemo fuga itaque id, accusantium adipisci illum soluta?
+                            </p>
+                        </div>
+                    </section>
+                    <div className="h-[2000px] forth-move"></div>
+                    {/* about section */}
+
+                    <section className="forth-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-700 ml-auto rounded-tl-[200px] rounded-bl-[0px] text-blue-500">
+                        <div className="section-intro-wrapper text-green-500">
+                            <span className=" text-green-500">forth sectiond</span>
                         </div>
 
                         <div className="relative px-[10%] py-[5%]">
