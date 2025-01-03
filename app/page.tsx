@@ -3,13 +3,14 @@
 import { Switch } from '@/components/ui/switch';
 import ExperienceComponent from './components/Experience/ExperienceComponent';
 import { Sun, Moon } from 'lucide-react';
+
 export default function Home() {
     return (
         <main className="light-theme">
             <div className="fixed w-screen h-screen">
                 <ExperienceComponent />
             </div>
-            <div className="w-full h-full z-30" data-test-id>
+            <div className="w-full h-full z-30">
                 <div className="fixed flex-row-center top-10 right-10 z-40">
                     <div className="flex-row-center ">
                         <Sun />
@@ -36,7 +37,7 @@ export default function Home() {
                     </section>
                     <div className="h-[2000px] first-move"></div>
                     {/* first section */}
-                    <section className="first-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-400 mr-auto rounded-tr-[200px] rounded-br-[0px]">
+                    <section className="first-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-400 mr-auto rounded-tr-[700px] rounded-br-[0px]  section">
                         <div className="section-intro-wrapper ">
                             <span className="text-red-600">About 01</span>
                         </div>
@@ -61,7 +62,7 @@ export default function Home() {
                     </section>
                     <div className="h-[2000px] second-move"></div>
                     {/* second section */}
-                    <section className="second-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-700 ml-auto rounded-tl-[200px] rounded-bl-[0px] text-blue-500">
+                    <section className="second-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-700 ml-auto rounded-tl-[700px] rounded-bl-[0px] text-blue-500 section">
                         <div className="section-intro-wrapper text-blue-500">
                             <span className=" text-blue-500">Work 02</span>
                         </div>
@@ -86,7 +87,7 @@ export default function Home() {
                     </section>
                     <div className="h-[2000px] third-move"></div>
                     {/* third section */}
-                    <section className="third-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-400 mr-auto rounded-tr-[200px] rounded-br-[0px] text-green-500">
+                    <section className="third-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-400 mr-auto rounded-tr-[700px] rounded-br-[0px] text-green-500 section">
                         <div className="section-intro-wrapper text-green-500">
                             <span className=" text-green-500">third sectiond</span>
                         </div>
@@ -112,7 +113,7 @@ export default function Home() {
                     <div className="h-[2000px] forth-move"></div>
                     {/* about section */}
 
-                    <section className="forth-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-700 ml-auto rounded-tl-[200px] rounded-bl-[0px] text-blue-500">
+                    <section className="forth-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-700 ml-auto rounded-tl-[700px] rounded-bl-[0px] text-blue-500 section">
                         <div className="section-intro-wrapper text-green-500">
                             <span className=" text-green-500">forth sectiond</span>
                         </div>

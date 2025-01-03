@@ -21,6 +21,7 @@ export default class Controls {
     public thirdMoveTimeline!: gsap.core.Timeline;
     public forthMoveTimeline!: gsap.core.Timeline;
     public platformTimeline!: gsap.core.Timeline;
+    public sections!: any;
     public camera: Camera;
 
     public screenMesh!: THREE.Object3D | null;
@@ -310,6 +311,48 @@ export default class Controls {
                         },
                         startDelay + orderedObjects.length * 0.2,
                     );
+                });
+                this.sections = document.querySelectorAll('.section');
+                this.sections.forEach((section: HTMLElement) => {
+                    if (section.classList.contains('ml-auto')) {
+                        GSAP.to(section, {
+                            borderTopLeftRadius: 10,
+                            scrollTrigger: {
+                                trigger: section,
+                                start: 'top bottom',
+                                end: 'top top',
+                                scrub: 0.6,
+                            },
+                        });
+                        GSAP.to(section, {
+                            borderBottomLeftRadius: 700,
+                            scrollTrigger: {
+                                trigger: section,
+                                start: 'bottom bottom',
+                                end: 'bottom top',
+                                scrub: 0.6,
+                            },
+                        });
+                    } else {
+                        GSAP.to(section, {
+                            borderTopRightRadius: 10,
+                            scrollTrigger: {
+                                trigger: section,
+                                start: 'top bottom',
+                                end: 'top top',
+                                scrub: 0.6,
+                            },
+                        });
+                        GSAP.to(section, {
+                            borderBottomRightRadius: 700,
+                            scrollTrigger: {
+                                trigger: section,
+                                start: 'bottom bottom',
+                                end: 'bottom top',
+                                scrub: 0.6,
+                            },
+                        });
+                    }
                 });
             },
         });
