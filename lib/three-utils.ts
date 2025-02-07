@@ -33,14 +33,23 @@ class Sizes extends EventEmitter {
     public height: number;
     public aspect: number;
     public pixelRatio: number;
-
+    public device: string;
     constructor() {
         super();
         this.width = window.innerWidth;
         this.height = window.innerHeight;
         this.aspect = this.width / this.height;
         this.pixelRatio = Math.min(window.devicePixelRatio, 2);
-
+        this.device = '';
+        if (this.width < 1024 && this.device !== 'mobile') {
+            this.device = 'mobile';
+            this.emit('switchdevice', this.device);
+            console.log('mobile');
+        } else if (this.width > 1024 && this.device !== 'desktop') {
+            this.device = 'desktop';
+            this.emit('switchdevice', this.device);
+            console.log('desktop');
+        }
         window.addEventListener('resize', () => {
             this.width = window.innerWidth;
             this.height = window.innerHeight;

@@ -7,8 +7,9 @@ import Env from './Env';
 import Controls from './Controls';
 import Floor from './Floor';
 import Theme from './Theme';
+import EventEmitter from 'events';
 
-export default class World {
+export default class World extends EventEmitter{
     public experience: Experience;
     public environment!: Env;
     public controls!: Controls;
@@ -20,6 +21,7 @@ export default class World {
     public canvas: HTMLCanvasElement;
     public floor!: Floor;
     constructor(experience: Experience) {
+		super()
         this.experience = experience;
         this.sizes = this.experience.sizes;
         this.theme = new Theme();
@@ -32,6 +34,7 @@ export default class World {
             this.environment = new Env(experience);
             this.floor = new Floor(experience);
             this.controls = new Controls(experience);
+			this.emit('worldready');
         });
         this.theme.on('switch', (theme) => this.switchTheme(theme));
     }

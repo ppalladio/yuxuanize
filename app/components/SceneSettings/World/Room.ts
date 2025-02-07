@@ -24,6 +24,7 @@ export default class Room {
     public rotation!: number;
     public room: RoomProps;
     public roomObject: THREE.Object3D;
+    public roomChildren: { [key: string]: THREE.Object3D };
     constructor(experience: Experience) {
         this.experience = experience;
         this.scene = this.experience.scene;
@@ -36,6 +37,7 @@ export default class Room {
             target: 0,
             ease: 0.1,
         };
+        this.roomChildren = {};
         this.setModel();
         this.onMouseMove();
     }
@@ -70,32 +72,33 @@ export default class Room {
                     });
                     break;
 
-                case 'vinyl_record':
-                    if (child.children[0].name === 'label') {
-                        (child.children[0] as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
-                            metalness: 1,
-                            color: 'red',
-                        });
-                    }
-                    break;
+                // case 'vinyl_record':
+                // 	console.log(child.children)
+                //     if (child.children[0].name === 'label') {
+                //         (child.children[0] as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
+                //             metalness: 1,
+                //             color: 'red',
+                //         });
+                //     }
+                //     break;
 
                 case 'walkway':
-                    child.position.x = 1.20846 ;
+                    child.position.x = 1.20846;
                     child.position.z = 3.5;
-		
+
                     break;
 
-                case 'mailbox':
-                case 'tile1':
-                case 'tile2':
-                case 'tile3':
-                case 'tile4':
-                case 'soil':
-                case 'flowers':
-                case 'lamp':
-                case 'lamp_glass':
-                    child.scale.set(0, 0, 0);
-                    break;
+                // case 'mailbox':
+                // case 'tile1':
+                // case 'tile2':
+                // case 'tile3':
+                // case 'tile4':
+                // case 'soil':
+                // case 'flowers':
+                // case 'lamp':
+                // case 'lamp_glass':
+                //     child.scale.set(0, 0, 0);
+                //     break;
 
                 case 'walkwayGlass':
                     (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
@@ -107,6 +110,12 @@ export default class Room {
                     });
                     break;
             }
+            child.scale.set(0, 0, 0);
+            if (child.name === 'prerender_box') {
+                child.scale.set(1, 1, 1);
+                child.position.set(0, 1, 0);
+            }
+            this.roomChildren[child.name] = child;
         });
         this.roomObject.scale.set(0.3, 0.3, 0.3);
         this.scene.add(this.roomObject);
