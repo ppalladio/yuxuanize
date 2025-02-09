@@ -46,6 +46,15 @@ export default class Room {
             child.castShadow = true;
             child.receiveShadow = true;
 
+            if (child.name !== 'prerender_box') {
+                child.scale.set(0, 0, 0);
+            } else {
+                child.scale.set(1, 1, 1);
+                child.position.set(0, 0, 0);
+                child.castShadow = false;
+                child.receiveShadow = false;
+            }
+
             if (child instanceof THREE.Group) {
                 child.children.forEach((groupChild) => {
                     groupChild.castShadow = true;
@@ -58,6 +67,8 @@ export default class Room {
                     (child as THREE.Mesh).material = new THREE.MeshBasicMaterial({
                         map: this.resources.items.screen,
                     });
+                    child.castShadow = false;
+
                     break;
 
                 case 'player_glass':
@@ -83,22 +94,23 @@ export default class Room {
                 //     break;
 
                 case 'walkway':
-                    child.position.x = 1.20846;
-                    child.position.z = 3.5;
+                    child.position.x = 0.905773;
+                    child.position.z = 2.61832;
+                    child.position.y = 0.150638;
 
                     break;
 
-                // case 'mailbox':
-                // case 'tile1':
-                // case 'tile2':
-                // case 'tile3':
-                // case 'tile4':
-                // case 'soil':
-                // case 'flowers':
-                // case 'lamp':
-                // case 'lamp_glass':
-                //     child.scale.set(0, 0, 0);
-                //     break;
+                case 'mailbox':
+                case 'tile1':
+                case 'tile2':
+                case 'tile3':
+                case 'tile4':
+                case 'soil':
+                case 'flowers':
+                case 'lamp':
+                case 'lamp_glass':
+                    child.scale.set(0, 0, 0);
+                    break;
 
                 case 'walkwayGlass':
                     (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
@@ -110,22 +122,23 @@ export default class Room {
                     });
                     break;
             }
-            child.scale.set(0, 0, 0);
-            if (child.name === 'prerender_box') {
-                child.scale.set(1, 1, 1);
-                child.position.set(0, 1, 0);
-            }
+            this.roomObject.scale.set(0.3, 0.3, 0.3);
             this.roomChildren[child.name] = child;
         });
-        this.roomObject.scale.set(0.3, 0.3, 0.3);
+
         this.scene.add(this.roomObject);
     }
-    public onMouseMove() {
-        window.addEventListener('mousemove', (e) => {
+    private readonly handleMouseMove = (e: MouseEvent) => {
+        if (!this.roomChildren.prerender_box.visible) {
             this.rotation = (e.clientX - window.innerWidth / 2) / window.innerWidth;
             this.lerp.target = this.rotation * 0.1;
-        });
+        }
+    };
+    public onMouseMove() {
+        window.removeEventListener('mousemove', this.handleMouseMove);
+        window.addEventListener('mousemove', this.handleMouseMove);
     }
+
     public getMesh(meshName: string) {
         return this.roomObject.children.find((child) => child.name === meshName) || null;
     }
