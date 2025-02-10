@@ -45,6 +45,7 @@ export default class Room {
         this.roomObject.children.forEach((child) => {
             child.castShadow = true;
             child.receiveShadow = true;
+            console.log(child);
 
             if (child.name !== 'prerender_box') {
                 child.scale.set(0, 0, 0);
@@ -62,66 +63,74 @@ export default class Room {
                 });
             }
 
-            switch (child.name) {
-                case 'screen':
-                    (child as THREE.Mesh).material = new THREE.MeshBasicMaterial({
-                        map: this.resources.items.screen,
-                    });
-                    child.castShadow = false;
+            const objects = [
+                'screen',
+                'player_glass',
+                'cup',
+                'walkway',
+                'mailbox',
+                'tile1',
+                'tile2',
+                'tile3',
+                'tile4',
+                'soil',
+                'flowers',
+                'lamp',
+                'lamp_glass',
+                'walkwayGlass',
+            ];
 
-                    break;
+            objects.forEach((name) => {
+                const obj = this.getMesh(name);
+                if (!obj) return;
 
-                case 'player_glass':
-                case 'cup':
-                    (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
-                        metalness: 0,
-                        roughness: 0,
-                        transmission: 1.0,
-                        thickness: 2,
-                        reflectivity: 0,
-                        anisotropy: 1.0,
-                    });
-                    break;
+                switch (name) {
+                    case 'screen':
+                        (obj as THREE.Mesh).material = new THREE.MeshBasicMaterial({
+                            map: this.resources.items.screen,
+                        });
+                        child.castShadow = false;
+                        break;
+                    case 'player_glass':
+                    case 'cup':
+                        (obj as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
+                            metalness: 0,
+                            roughness: 0,
+                            transmission: 1.0,
+                            thickness: 2,
+                            reflectivity: 0,
+                            anisotropy: 1.0,
+                        });
+                        break;
 
-                // case 'vinyl_record':
-                // 	console.log(child.children)
-                //     if (child.children[0].name === 'label') {
-                //         (child.children[0] as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
-                //             metalness: 1,
-                //             color: 'red',
-                //         });
-                //     }
-                //     break;
+                    case 'walkway':
+                        obj.position.set(0.905773, 0.150638, 2.61832);
+                        break;
 
-                case 'walkway':
-                    child.position.x = 0.905773;
-                    child.position.z = 2.61832;
-                    child.position.y = 0.150638;
+                    case 'mailbox':
+                    case 'tile1':
+                    case 'tile2':
+                    case 'tile3':
+                    case 'tile4':
+                    case 'soil':
+                    case 'flowers':
+                    case 'lamp':
+                    case 'lamp_glass':
+                        obj.scale.set(0, 0, 0);
+                        break;
 
-                    break;
+                    case 'walkwayGlass':
+                        (obj as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
+                            emissive: 'white',
+                            roughness: 0,
+                            transmission: 1,
+                            opacity: 0.5,
+                            emissiveIntensity: 1,
+                        });
+                        break;
+                }
+            });
 
-                case 'mailbox':
-                case 'tile1':
-                case 'tile2':
-                case 'tile3':
-                case 'tile4':
-                case 'soil':
-                case 'flowers':
-                case 'lamp':
-                case 'lamp_glass':
-                    child.scale.set(0, 0, 0);
-                    break;
-
-                case 'walkwayGlass':
-                    (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
-                        emissive: 'white',
-                        roughness: 0,
-                        transmission: 1,
-                        opacity: 0.5,
-                        emissiveIntensity: 1,
-                    });
-                    break;
-            }
             this.roomObject.scale.set(0.3, 0.3, 0.3);
             this.roomChildren[child.name] = child;
         });
@@ -139,8 +148,21 @@ export default class Room {
         window.addEventListener('mousemove', this.handleMouseMove);
     }
 
-    public getMesh(meshName: string) {
-        return this.roomObject.children.find((child) => child.name === meshName) || null;
+    public findObjectByName(root: THREE.Object3D, name: string): THREE.Object3D | null {
+        // Check current node
+        if (root.name.toLowerCase().includes(name.toLowerCase())) {
+            return root;
+        }
+        // Recurse through children
+        for (const child of root.children) {
+            const found = this.findObjectByName(child, name);
+            if (found) return found;
+        }
+        return null;
+    }
+
+    public getMesh(name: string) {
+        return this.findObjectByName(this.roomObject, name);
     }
     public update() {
         this.lerp.current = gsap.utils.interpolate(this.lerp.current, this.lerp.target, this.lerp.ease);

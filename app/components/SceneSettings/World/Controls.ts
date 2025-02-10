@@ -27,7 +27,6 @@ export default class Controls {
     public screenMesh!: THREE.Object3D | null;
     public vinylPlayerMesh!: THREE.Object3D | null;
     public vinylRecord!: THREE.Object3D | null;
-    public vinylRecordLabel!: THREE.Object3D | null;
 
     constructor(experience: Experience) {
         this.experience = experience;
@@ -40,10 +39,10 @@ export default class Controls {
         this.setScrollTrigger();
 
         this.screenMesh = this.experience.world.room.getMesh('screen');
+		
         this.vinylPlayerMesh = this.experience.world.room.getMesh('player_glass');
-        this.vinylRecord = this.experience.world.room.getMesh('vinyl_record');
+   
 
-        this.vinylRecordLabel = this.experience.world.room.getMesh('vinyl_record')!.children[0];
     }
 
     setScrollTrigger() {
@@ -270,7 +269,7 @@ export default class Controls {
                         walkway.position,
                         {
                             x: -1.69728,
-                            z:5.29758 ,
+                            z: 5.29758,
                             duration: 1,
                         },
                         0.2,
@@ -283,7 +282,6 @@ export default class Controls {
                 orderedObjects.forEach((objectName, index) => {
                     const object = this.room.children.find((child) => child.name === objectName);
                     if (object) {
-
                         this.platformTimeline.to(
                             object.scale,
                             {
@@ -294,7 +292,7 @@ export default class Controls {
                                 duration: 0.3,
                             },
                             startDelay + index * 0.2,
-                        )
+                        );
                     }
                 });
 

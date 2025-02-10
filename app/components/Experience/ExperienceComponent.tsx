@@ -34,44 +34,69 @@ export default function ExperienceComponent({ onLoaded }: ExperienceComponentPro
                 }
             });
 
+            // Define platform objects that should only animate on scroll
+            const platformObjects = ['walkway', 'tile1', 'tile2', 'tile3', 'tile4', 'soil', 'flowers', 'lamp', 'lamp_glass', 'mailbox'];
+
             // When resources are loaded, do final animation
             experience.resources.on('ready', () => {
                 if (loadingBox) {
                     const tl = GSAP.timeline({
                         onComplete: () => {
                             if (loadingBox) {
-                                // Hide loading box and disable interactions
                                 loadingBox.visible = false;
                                 loadingBox.traverse((child) => {
-                                    // Disable raycasting interactions
                                     child.userData.interactive = false;
                                     if (child instanceof THREE.Mesh) {
-                                        child.raycast = () => {}; // Empty raycast function
+                                        child.raycast = () => {};
                                     }
                                 });
                             }
 
-                            // Show and enable interactions for the rest of the room
-                            experience.world.room.roomObject.children.forEach((child) => {
-                                if (child.name !== 'prerender_box') {
-                                    GSAP.to(child.scale, {
-                                        x: 1,
-                                        y: 1,
-                                        z: 1,
-                                        duration: 0.7,
-                                        ease: 'power2.out',
-                                    });
-                                    // Enable interactions for room objects
-                                    child.userData.interactive = true;
-                                }
+                            // Create a new timeline for room objects animation
+                            const roomTl = GSAP.timeline({
+                                onComplete: () => {
+                                    experience.world.room.onMouseMove();
+                                    onLoaded();
+                                },
                             });
 
-                            // Enable room mouse interactions
-                            experience.world.room.onMouseMove();
-                            onLoaded();
+                            // Define groups of objects to animate in sequence (excluding platform objects)
+                            const sequences = [
+                                ['room_g0', 'floor_g1', 'cabinet_g2'],
+
+                                ['chair_g3', 'desk_g3', 'objects_s_g4'],
+                            ];
+
+                            let delay = 0;
+                            sequences.forEach((sequence) => {
+                                sequence.forEach((objectName) => {
+                                    const object = experience.world.room.roomChildren[objectName];
+                                    if (object && !platformObjects.includes(objectName)) {
+                                        roomTl.to(object.scale, {
+                                            x: 1,
+                                            y: 1,
+                                            z: 1,
+                                            duration: 0.7,
+                                            ease: 'power3.out',
+                                            delay: delay,
+                                        });
+                                        delay += 0.05;
+                                    }
+                                });
+                                delay += 0.2;
+                            });
+
+                            // Ensure platform objects start with scale 0
+                            platformObjects.forEach((objectName) => {
+                                const object = experience.world.room.roomChildren[objectName];
+                                if (object) {
+                                    object.scale.set(0, 0, 0);
+                                }
+                            });
                         },
                     });
 
+                    // Prerender box exit animation
                     tl.to(loadingBox.rotation, {
                         y: Math.PI,
                         duration: 1.5,
