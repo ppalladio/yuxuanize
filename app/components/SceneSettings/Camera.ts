@@ -46,7 +46,7 @@ export default class Camera {
         );
 
         this.orthographicCamera.rotation.x = -Math.atan(1 / Math.sqrt(2));
-        this.orthographicCamera.position.set(0, 4.2, 5);
+        this.orthographicCamera.position.set(0, 5.5, 5);
         // this.orthographicCamera.rotation.x = -Math.PI / 2;
         // this.orthographicCamera.zoom = 0.1;
         // this.orthographicCamera.updateProjectionMatrix();

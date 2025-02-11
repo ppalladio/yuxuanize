@@ -45,7 +45,6 @@ export default class Room {
         this.roomObject.children.forEach((child) => {
             child.castShadow = true;
             child.receiveShadow = true;
-            console.log(child);
 
             if (child.name !== 'prerender_box') {
                 child.scale.set(0, 0, 0);
@@ -82,6 +81,7 @@ export default class Room {
 
             objects.forEach((name) => {
                 const obj = this.getMesh(name);
+				
                 if (!obj) return;
 
                 switch (name) {
@@ -132,6 +132,7 @@ export default class Room {
             });
 
             this.roomObject.scale.set(0.3, 0.3, 0.3);
+			
             this.roomChildren[child.name] = child;
         });
 

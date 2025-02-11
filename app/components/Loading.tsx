@@ -17,7 +17,7 @@ export default function Loading({ started, onStarted }: LoadingProps) {
                     clearInterval(interval);
                     setTimeout(() => {
                         onStarted();
-                    }, 800); 
+                    }, 800);
                     return 100;
                 }
                 return newProgress;
@@ -34,14 +34,9 @@ export default function Loading({ started, onStarted }: LoadingProps) {
             }`}
         >
             <div className="w-full max-w-md px-4">
-                <h1 className="text-4xl font-bold mb-8 text-center">Loading Experience</h1>
                 <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 overflow-hidden">
-                    <div
-                        className="bg-primary h-2.5 rounded-full transition-all duration-300 ease-out"
-                        style={{ width: `${progress}%` }}
-                    />
+                    <div className="bg-primary h-2.5 rounded-full transition-all duration-300 ease-out" style={{ width: `${progress}%` }} />
                 </div>
-                <p className="text-center mt-4 text-muted-foreground">{progress}%</p>
             </div>
         </div>
     );

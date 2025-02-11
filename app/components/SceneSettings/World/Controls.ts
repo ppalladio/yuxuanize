@@ -37,12 +37,10 @@ export default class Controls {
         this.room = this.experience.world.room.roomObject;
         this.camera = this.experience.camera;
         this.setScrollTrigger();
-
+        console.log(this.room.position);
         this.screenMesh = this.experience.world.room.getMesh('screen');
-		
-        this.vinylPlayerMesh = this.experience.world.room.getMesh('player_glass');
-   
 
+        this.vinylPlayerMesh = this.experience.world.room.getMesh('player_glass');
     }
 
     setScrollTrigger() {
@@ -57,6 +55,7 @@ export default class Controls {
                         end: 'bottom bottom',
                         scrub: 0.6,
                         invalidateOnRefresh: true,
+                        markers: true,
                     },
                 }).to(this.camera.orthographicCamera.position, {
                     x: () => {
@@ -82,7 +81,7 @@ export default class Controls {
                                 return -1;
                             },
                             z: () => {
-                                return this.sizes.height * 0.007;
+                                return this.sizes.height * 0.012;
                             },
                         },
                         'same',
@@ -106,6 +105,7 @@ export default class Controls {
                         end: 'bottom bottom',
                         scrub: 0.6,
                         invalidateOnRefresh: true,
+                       
                     },
                 })
                     .to(
@@ -114,7 +114,8 @@ export default class Controls {
                             // move the room 'left'+ and 'right'-
                             x: -8,
                             // move the room 'up'+ and 'down'-
-                            z: 11,
+                            z: 20,
+                          
                         },
                         'same',
                     )
@@ -142,19 +143,19 @@ export default class Controls {
                         this.camera.orthographicCamera.position,
                         {
                             x: -8,
-                            z: 23,
+                            z: 32,
                         },
                         'same',
                     )
                     .to(
                         this.room.scale,
                         {
-                            x: 0.9,
-                            y: 0.9,
-                            z: 0.9,
+                            x: 1.1,
+                            y: 1.1,
+                            z: 1.1,
                         },
                         'same',
-                    );
+                    )
             },
             // hide model on scroll
             '(max-width: 1024px)': () => {
@@ -239,17 +240,17 @@ export default class Controls {
                     .to(
                         this.room.scale,
                         {
-                            x: 1.2,
-                            y: 1.2,
-                            z: 1.2,
+                            x: 1,
+                            y: 1,
+                            z: 1,
                         },
                         'same',
                     )
                     .to(
                         this.room.position,
                         {
-                            x: 4,
-                            z: -7,
+                            x: -10,
+                            z: -10,
                         },
                         'same',
                     );
@@ -263,36 +264,46 @@ export default class Controls {
                 });
 
                 // Find and animate walkway first
-                const walkway = this.room.children.find((child) => child.name === 'walkway');
+                const walkway = this.experience.world.room.getMesh('walkway');
+                console.log(walkway);
                 if (walkway) {
-                    this.platformTimeline.to(
-                        walkway.position,
-                        {
-                            x: -1.69728,
-                            z: 5.29758,
-                            duration: 1,
-                        },
-                        0.2,
-                    );
+                    this.platformTimeline
+                        .to(
+                            walkway.scale,
+                            {
+                                x: 1,
+                                y: 1,
+                                z: 1,
+                                duration: 1,
+                            },
+                            'same',
+                        )
+                        .to(
+                            walkway.position,
+                            {
+                                x: -1.69728,
+                                z: 5.29758,
+                                duration: 1,
+                            },
+                            'same',
+                        );
                 }
 
                 const orderedObjects = ['mailbox', 'tile1', 'tile2', 'tile3', 'tile4', 'soil', 'flowers'];
                 const startDelay = 1.2;
 
                 orderedObjects.forEach((objectName, index) => {
-                    const object = this.room.children.find((child) => child.name === objectName);
+                    const object = this.experience.world.room.getMesh(objectName);
+
                     if (object) {
-                        this.platformTimeline.to(
-                            object.scale,
-                            {
-                                x: 1,
-                                y: 1,
-                                z: 1,
-                                ease: 'back.out(2)',
-                                duration: 0.3,
-                            },
-                            startDelay + index * 0.2,
-                        );
+                        this.platformTimeline.to(object.scale, {
+                            x: 1,
+                            y: 1,
+                            z: 1,
+                            ease: 'back.out(2)',
+                            delay: 0.2,
+                            duration: 0.3,
+                        });
                     }
                 });
 

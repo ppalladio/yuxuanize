@@ -20,16 +20,23 @@ export default function ExperienceComponent({ onLoaded }: ExperienceComponentPro
             experience.world.on('worldready', () => {
                 loadingBox = experience.world.room.roomChildren.prerender_box;
                 if (loadingBox) {
-                    // Initial position and scale
-                    loadingBox.scale.set(1, 1, 1);
+                    // Initial state: keep the original position if needed.
                     loadingBox.position.set(0, 0, 0);
+                    loadingBox.scale.set(2, 2, 2);
 
-                    // Start rotating animation
+                    // Animate both rotation and upward movement.
                     GSAP.to(loadingBox.rotation, {
                         y: Math.PI * 2,
                         duration: 2,
                         repeat: -1,
                         ease: 'none',
+                    });
+
+                    // Animate the box upward to y = 2 over 1 second.
+                    GSAP.to(loadingBox.position, {
+                        y: 2, 
+                        duration: 1,
+                        ease: 'back.out(2)',
                     });
                 }
             });
@@ -61,29 +68,40 @@ export default function ExperienceComponent({ onLoaded }: ExperienceComponentPro
                             });
 
                             // Define groups of objects to animate in sequence (excluding platform objects)
-                            const sequences = [
-                                ['room_g0', 'floor_g1', 'cabinet_g2'],
+                            const sequences = [['room_p0', 'carpet_p1', 'lamp_p1'], ['cabinet_p1', 'desk_p1'], ['shelf_p1']];
 
-                                ['chair_g3', 'desk_g3', 'objects_s_g4'],
-                            ];
-
+                            // Adjust this value to control how high above each object starts
+                            const offset = 3;
                             let delay = 0;
+
                             sequences.forEach((sequence) => {
                                 sequence.forEach((objectName) => {
                                     const object = experience.world.room.roomChildren[objectName];
                                     if (object && !platformObjects.includes(objectName)) {
-                                        roomTl.to(object.scale, {
-                                            x: 1,
-                                            y: 1,
-                                            z: 1,
-                                            duration: 0.7,
-                                            ease: 'power3.out',
-                                            delay: delay,
-                                        });
+                                        // Save the original (final) Y position
+                                        const finalY = object.position.y;
+                                        // Set the initial state: scale 0 and position offset upward
+                                        object.scale.set(0, 0, 0);
+                                        object.position.y = finalY + offset;
+
+                                        // Animate scale to full size
+                                        roomTl.to(
+                                            object.scale,
+                                            {
+                                                x: 1,
+                                                y: 1,
+                                                z: 1,
+                                                duration: 0.7,
+                                                ease: 'power3.out',
+                                                delay: delay,
+                                            },
+                                            'same',
+                                        );
+
                                         delay += 0.05;
                                     }
                                 });
-                                delay += 0.2;
+                                delay += 0.15;
                             });
 
                             // Ensure platform objects start with scale 0
@@ -105,11 +123,11 @@ export default function ExperienceComponent({ onLoaded }: ExperienceComponentPro
                         .to(
                             loadingBox.scale,
                             {
-                                x: 30,
-                                y: 30,
-                                z: 30,
+                                x: 0,
+                                y: 0,
+                                z: 0,
                                 duration: 0.8,
-                                ease: 'power2.in',
+                                ease: 'power2.out',
                             },
                             '+=0.2',
                         )
@@ -118,7 +136,7 @@ export default function ExperienceComponent({ onLoaded }: ExperienceComponentPro
                             {
                                 y: -2,
                                 duration: 0.8,
-                                ease: 'power2.out',
+                                ease: 'back.out(2)',
                             },
                             '<',
                         )
