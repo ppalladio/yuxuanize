@@ -3,11 +3,11 @@ import * as THREE from 'three';
 import Camera from '@/app/components/SceneSettings/Camera';
 import Renderer from '../SceneSettings/Renderer';
 import World from '../SceneSettings/World/World';
-import Theme from '../SceneSettings/World/Theme';
+// import Theme from '../SceneSettings/World/Theme';
 // import Preloader from '../Preloader';
 export default class Experience {
     private static instance: Experience;
-	public theme!: Theme;
+    // public theme!: Theme;
     public sizes!: Sizes;
     public scene!: THREE.Scene;
     public camera!: Camera;
@@ -15,14 +15,14 @@ export default class Experience {
     public time!: Time;
     public world!: World;
     public resources!: Resources;
-	// public preloader!:Preloader
+    // public preloader!:Preloader
     constructor(public canvas: HTMLCanvasElement) {
         if (Experience.instance) {
             return Experience.instance;
         }
 
         Experience.instance = this;
-		this.theme = new Theme();
+        // this.theme = new Theme();
         this.scene = new THREE.Scene();
         this.sizes = new Sizes();
         this.camera = new Camera(this);
@@ -30,7 +30,7 @@ export default class Experience {
         this.time = new Time();
         this.resources = new Resources(Assets, this);
         this.world = new World(this);
-		// this.preloader = new Preloader(this);
+        // this.preloader = new Preloader(this);
         this.time.on('time update', () => this.update());
         this.sizes.on('resize', () => this.resize());
         this.update();

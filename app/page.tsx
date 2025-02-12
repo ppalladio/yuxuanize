@@ -12,23 +12,25 @@ export default function Home() {
     return (
         <main className="light-theme">
             <Loading started={started} onStarted={() => setStarted(true)} />
-            
+
             <div className={`transition-opacity duration-500 ${started ? 'opacity-100' : 'opacity-0'}`}>
                 <div className="fixed w-screen h-screen">
                     <ExperienceComponent onLoaded={() => setStarted(true)} />
                 </div>
-                
+
                 <div className="w-full h-full z-30">
-                    <div className="fixed flex-row-center top-10 right-10 z-40">
+                    {/* TODO: theme toggle env.ts */}
+					{/* <div className=" fixed flex-row-center top-10 right-10 z-40">
                         <div className="flex-row-center ">
                             <Sun />
                         </div>
-                        <Switch className="toggle-button" />
+                        <Switch className="toggle-button" /> @theme.ts
 
                         <div className="moon-wrapper">
                             <Moon />
                         </div>
-                    </div>
+                    </div> */}
+					{/* finish todo */}
                     <div className="relative">
                         <section className=" w-full h-full">
                             <div className="hero-wrapper">
@@ -119,9 +121,10 @@ export default function Home() {
                             </div>
                         </section>
                         <div className="h-[2000px] forth-move"></div>
+
                         {/* about section */}
 
-                        <section className="forth-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-700 ml-auto rounded-tl-[700px] rounded-bl-[0px] text-blue-500 section">
+                        {/* <section className="forth-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-700 ml-auto rounded-tl-[700px] rounded-bl-[0px] text-blue-500 section">
                             <div className="section-intro-wrapper text-green-500">
                                 <span className=" text-green-500">forth sectiond</span>
                             </div>
@@ -143,7 +146,7 @@ export default function Home() {
                                     magni iste corrupti sequi, vel iusto nemo fuga itaque id, accusantium adipisci illum soluta?
                                 </p>
                             </div>
-                        </section>
+                        </section> */}
                     </div>
                 </div>
             </div>

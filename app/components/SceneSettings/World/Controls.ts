@@ -105,7 +105,6 @@ export default class Controls {
                         end: 'bottom bottom',
                         scrub: 0.6,
                         invalidateOnRefresh: true,
-                       
                     },
                 })
                     .to(
@@ -115,7 +114,6 @@ export default class Controls {
                             x: -8,
                             // move the room 'up'+ and 'down'-
                             z: 20,
-                          
                         },
                         'same',
                     )
@@ -143,21 +141,21 @@ export default class Controls {
                         this.camera.orthographicCamera.position,
                         {
                             x: -8,
-                            z: 32,
+                            z: 25,
                         },
                         'same',
                     )
                     .to(
                         this.room.scale,
                         {
-                            x: 1.1,
-                            y: 1.1,
-                            z: 1.1,
+                            x: 0.3,
+                            y: 0.3,
+                            z: 0.3,
                         },
                         'same',
-                    )
+                    );
             },
-            // hide model on scroll
+            // hide model on scroll mobile <1024
             '(max-width: 1024px)': () => {
                 // 1st section
                 this.firstMoveTimeline = GSAP.timeline({
@@ -168,11 +166,23 @@ export default class Controls {
                         scrub: 0.6,
                         invalidateOnRefresh: true,
                     },
-                }).to(this.room.scale, {
-                    x: 0.6,
-                    y: 0.6,
-                    z: 0.6,
-                });
+                })
+                    .to(
+                        this.room.scale,
+                        {
+                            x: 0.6,
+                            y: 0.6,
+                            z: 0.6,
+                        },
+                        'same',
+                    )
+                    .to(
+                        this.room.position,
+                        {
+                            z: 5,
+                        },
+                        'same',
+                    );
                 //2nd section
                 this.secondMoveTimeline = GSAP.timeline({
                     scrollTrigger: {
@@ -196,7 +206,7 @@ export default class Controls {
                         this.room.position,
                         {
                             x: 2,
-                            z: 2,
+                            z: 10,
                         },
                         'same',
                     );
@@ -213,17 +223,17 @@ export default class Controls {
                     .to(
                         this.room.scale,
                         {
-                            x: 1.5,
-                            y: 1.5,
-                            z: 1.5,
+                            x: 3,
+                            y: 3,
+                            z: 3,
                         },
                         'same',
                     )
                     .to(
                         this.room.position,
                         {
-                            x: -4,
-                            z: 5,
+                            x: -12,
+                            z: 30,
                         },
                         'same',
                     );
@@ -240,17 +250,17 @@ export default class Controls {
                     .to(
                         this.room.scale,
                         {
-                            x: 1,
-                            y: 1,
-                            z: 1,
+                            x: 0.5,
+                            y: 0.5,
+                            z: 0.5,
                         },
                         'same',
                     )
                     .to(
                         this.room.position,
                         {
-                            x: -10,
-                            z: -10,
+                            x: 0,
+                            z: 2,
                         },
                         'same',
                     );
@@ -264,64 +274,64 @@ export default class Controls {
                 });
 
                 // Find and animate walkway first
-                const walkway = this.experience.world.room.getMesh('walkway');
-                console.log(walkway);
-                if (walkway) {
-                    this.platformTimeline
-                        .to(
-                            walkway.scale,
-                            {
-                                x: 1,
-                                y: 1,
-                                z: 1,
-                                duration: 1,
-                            },
-                            'same',
-                        )
-                        .to(
-                            walkway.position,
-                            {
-                                x: -1.69728,
-                                z: 5.29758,
-                                duration: 1,
-                            },
-                            'same',
-                        );
-                }
+                // const walkway = this.experience.world.room.getMesh('walkway');
 
-                const orderedObjects = ['mailbox', 'tile1', 'tile2', 'tile3', 'tile4', 'soil', 'flowers'];
-                const startDelay = 1.2;
+                // if (walkway) {
+                //     this.platformTimeline
+                //         .to(
+                //             walkway.scale,
+                //             {
+                //                 x: 1,
+                //                 y: 1,
+                //                 z: 1,
+                //                 duration: 1,
+                //             },
+                //             'same',
+                //         )
+                //         .to(
+                //             walkway.position,
+                //             {
+                //                 x: -2,
+                //                 z: 4.29758,
+                //                 duration: 1,
+                //             },
+                //             'same',
+                //         );
+                // }
 
-                orderedObjects.forEach((objectName, index) => {
-                    const object = this.experience.world.room.getMesh(objectName);
+                // const orderedObjects = ['mailbox', 'tile1', 'tile2', 'tile3', 'tile4', 'soil', 'flowers'];
+                // const startDelay = 1.2;
 
-                    if (object) {
-                        this.platformTimeline.to(object.scale, {
-                            x: 1,
-                            y: 1,
-                            z: 1,
-                            ease: 'back.out(2)',
-                            delay: 0.2,
-                            duration: 0.3,
-                        });
-                    }
-                });
+                // orderedObjects.forEach((objectName, index) => {
+                //     const object = this.experience.world.room.getMesh(objectName);
 
-                const lampObjects = this.room.children.filter((child) => ['lamp', 'lamp_glass'].includes(child.name));
+                //     if (object) {
+                //         this.platformTimeline.to(object.scale, {
+                //             x: 1,
+                //             y: 1,
+                //             z: 1,
+                //             ease: 'back.out(2)',
+                //             delay: 0.2,
+                //             duration: 0.3,
+                //         });
+                //     }
+                // });
 
-                lampObjects.forEach((child) => {
-                    this.platformTimeline.to(
-                        child.scale,
-                        {
-                            x: 1,
-                            y: 1,
-                            z: 1,
-                            ease: 'back.out(2)',
-                            duration: 0.3,
-                        },
-                        startDelay + orderedObjects.length * 0.2,
-                    );
-                });
+                // const lampObjects = this.room.children.filter((child) => ['lamp', 'lamp_glass'].includes(child.name));
+
+                // lampObjects.forEach((child) => {
+                //     this.platformTimeline.to(
+                //         child.scale,
+                //         {
+                //             x: 1,
+                //             y: 1,
+                //             z: 1,
+                //             ease: 'back.out(2)',
+                //             duration: 0.3,
+                //         },
+                //         startDelay + orderedObjects.length * 0.2,
+                //     );
+                // });
                 this.sections = document.querySelectorAll('.section');
                 this.sections.forEach((section: HTMLElement) => {
                     if (section.classList.contains('ml-auto')) {

@@ -6,7 +6,7 @@ import Camera from '../Camera';
 import Env from './Env';
 import Controls from './Controls';
 import Floor from './Floor';
-import Theme from './Theme';
+// import Theme from './Theme';
 import EventEmitter from 'events';
 
 export default class World extends EventEmitter{
@@ -15,7 +15,7 @@ export default class World extends EventEmitter{
     public controls!: Controls;
     public room!: Room;
     public resources: Resources;
-    public theme: Theme;
+    // public theme: Theme;
     public camera: Camera;
     public sizes: Sizes;
     public canvas: HTMLCanvasElement;
@@ -24,7 +24,7 @@ export default class World extends EventEmitter{
 		super()
         this.experience = experience;
         this.sizes = this.experience.sizes;
-        this.theme = new Theme();
+        // this.theme = new Theme();
         this.environment = new Env(experience);
         this.canvas = this.experience.canvas;
         this.camera = this.experience.camera;
@@ -36,7 +36,7 @@ export default class World extends EventEmitter{
             this.controls = new Controls(experience);
 			this.emit('worldready');
         });
-        this.theme.on('switch', (theme) => this.switchTheme(theme));
+        // this.theme.on('switch', (theme) => this.switchTheme(theme));
     }
     public resize() {}
     public switchTheme(theme: string) {
