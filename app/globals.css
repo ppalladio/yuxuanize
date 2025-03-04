@@ -94,7 +94,7 @@ html {
 }
 
 .hero-main {
-    bottom: -30rem;
+    bottom: -50rem;
     left: 0;
     @apply absolute;
 }
@@ -107,10 +107,7 @@ html {
 
 .section-intro-wrapper {
     position: relative;
-    padding: 20% 5%;
-    border-bottom: 2px solid #ffffff;
-    padding-bottom: 400px;
-    @apply dark:border-green-400;
+    padding: 10% 5%;
 }
 
 .section-intro-wrapper:nth-child(3) {

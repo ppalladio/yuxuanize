@@ -37,9 +37,7 @@ export default class Controls {
         this.room = this.experience.world.room.roomObject;
         this.camera = this.experience.camera;
         this.setScrollTrigger();
-        console.log(this.room.position);
         this.screenMesh = this.experience.world.room.getMesh('screen');
-
         this.vinylPlayerMesh = this.experience.world.room.getMesh('player_glass');
     }
 
@@ -55,7 +53,6 @@ export default class Controls {
                         end: 'bottom bottom',
                         scrub: 0.6,
                         invalidateOnRefresh: true,
-                        markers: true,
                     },
                 }).to(this.camera.orthographicCamera.position, {
                     x: () => {
@@ -63,7 +60,7 @@ export default class Controls {
                     },
                 });
                 // second section tl
-                // TODO adjust the height so the move would be slower
+      
 
                 this.secondMoveTimeline = GSAP.timeline({
                     scrollTrigger: {

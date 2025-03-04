@@ -32,6 +32,7 @@ export default class Env {
         // console.log('set', this.sunlight.intensity, this.ambientLight.intensity);
         this.scene.add(this.ambientLight);
     }
+	// TODO theme toggle
     public switchTheme(theme: string) {
         if (theme === 'dark') {
             GSAP.to(this.sunlight.color, { r: 0 / 255, g: 0 / 255, b: 0 / 255 });
