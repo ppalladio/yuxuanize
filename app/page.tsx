@@ -10,6 +10,7 @@ import Icons from '@/components/Icons';
 import { RiBlenderFill } from 'react-icons/ri';
 import Project from '@/components/Project';
 import BlenderCollage from '@/components/BlenderCollage';
+import { Separator } from '@/components/ui/separator';
 
 export default function Home() {
     const [started, setStarted] = useState(false);
@@ -85,7 +86,7 @@ export default function Home() {
                         </section>
                         <div className="h-[2000px] second-move"></div>
                         {/* second section */}
-                        <section className="second-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-300/95 ml-auto rounded-tl-[700px] rounded-bl-[0px] text-slate-500 section">
+                        <section className="second-section relative w-[50%] py-[20rem] px-[4%] m-0 overflow-hidden bg-slate-300/95 ml-auto rounded-tl-[700px] rounded-bl-[0px] text-slate-500 section">
                             <div className="section-detail-wrapper">
                                 <h3 className="text-2xl font-bold mt-[5rem] capitalize flex-row-center">heading1</h3>
                                 <Project
@@ -119,14 +120,54 @@ export default function Home() {
                         </section>
                         <div className="h-[2000px] third-move"></div>
                         {/* third section */}
-                        <section className="third-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-400 mr-auto rounded-tr-[700px] rounded-br-[0px] text-green-500 section">
+                        {/* <section className="third-section relative w-[50%] py-[20rem] px-[4%] m-0 overflow-hidden bg-slate-400 mr-auto rounded-tr-[700px] rounded-br-[0px] section">
+                            <div className="relative px-[10%] py-[5%]">
+                                <h1 className="text-3xl font-bold mt-[5rem] capitalize">Inspirations are like tides</h1>
+                                <h3 className="text-xl "> Stack</h3>
+                                <Separator className="w-full bg-slate-500 my-4" />
+                                <div className="flex md:flex-row flex-col md:items-between md:justify-evenly justify-center items-center">
+                                    <ul>
+                                        <li>a</li>
+                                        <li>s</li>
+                                        <li>d</li>
+                                        <li>d</li>
+                                    </ul>
+
+                                    <ul>
+                                        <li>a</li>
+                                        <li>s</li>
+                                        <li>d</li>
+                                        <li>d</li>
+                                    </ul>
+                                </div>
+                                <Separator className="w-full bg-slate-500 mt-4 mb-10" />
+                                <h3 className="text-xl"> work Experience</h3>
+                                <ul className="list-none ">
+                                    <li>
+                                        <h4 className='text-lg'>&mdash; Full Stack Web Developer - Col·lectivaT</h4>
+                                        <p className=''>
+                                            Successfully led the development of a translation website for marginalized languages, handling UX/UI
+                                            design in Figma and full-stack development with Next.js. Designed responsive, accessible interfaces with
+                                            Tailwind CSS and built a secure backend using Prisma and MongoDB. Ensured data integrity through rigorous
+                                            form validation and optimized server-side operations with Next.js APIs. Maintained the site, fixed
+                                            user-introduced bugs, and implemented new features while continuously applying SOLID principles to enhance
+                                            system robustness.
+                                        </p>
+                                    </li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                    <li>4</li>
+                                </ul>
+                            </div>
+                        </section> */}
+                        {/* <section className="third-section relative w-[50%] py-[1000px] px-[4%] m-0 overflow-hidden bg-slate-400 mr-auto rounded-tr-[700px] rounded-br-[0px] text-green-500 section">
                             
 
                             <div className="relative px-[10%] py-[5%]">
                                 <h3 className="text-3xl font-bold mt-[5rem] capitalize">Inspirations are like tides</h3>
                                <BlenderCollage/>
                             </div>
-                        </section>
+                        </section> */}
                         <div className="h-[2000px] forth-move"></div>
 
                         {/* about section */}

@@ -45,6 +45,7 @@ export default class Room {
         this.roomObject.children.forEach((child) => {
             child.castShadow = true;
             child.receiveShadow = true;
+			console.log(child)
 
             if (child.name !== 'prerender_box') {
                 child.scale.set(0, 0, 0);
@@ -54,9 +55,10 @@ export default class Room {
                 child.castShadow = false;
                 child.receiveShadow = false;
             }
-
             if (child instanceof THREE.Group) {
+				
                 child.children.forEach((groupChild) => {
+					console.log(groupChild)
                     groupChild.castShadow = true;
                     groupChild.receiveShadow = true;
                 });
