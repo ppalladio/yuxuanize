@@ -9,6 +9,7 @@ html {
     margin: 0;
     box-sizing: border-box;
 }
+
 @layer base {
     :root {
         --background: 0 0% 100%;
@@ -71,10 +72,9 @@ html {
         @apply border-border;
     }
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-foreground font-sangBleu;
     }
 }
-
 .flex-col-center {
     @apply flex flex-col items-center justify-center;
 }

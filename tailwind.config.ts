@@ -72,6 +72,9 @@ const config = {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
             },
+            fontFamily: {
+                sangBleu: ['var(--font-sang-bleu-sunrise)', 'sans-serif'],
+            },
         },
     },
     plugins: [require('tailwindcss-animate'), addVariablesForColors],

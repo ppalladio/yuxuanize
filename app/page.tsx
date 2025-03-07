@@ -41,11 +41,11 @@ export default function Home() {
                         <section className=" w-full h-full">
                             <div className="hero-wrapper">
                                 <div className="hero-main">
-                                    <h1 className="text-[60px]">ft.Yuxuan Peng</h1>
+                                    <h1 className="text-[60px]  ">ft.Yuxuan Peng</h1>
                                     <p className="text-3xl"></p>
                                 </div>
                                 <div className="hero-second">
-                                    <h1 className="text-3xl uppercase">
+                                    <h1 className="text-3xl uppercase font-bold italic">
                                         Into my room
                                         <br />
                                     </h1>
