@@ -93,12 +93,6 @@ html {
     @apply relative h-full;
 }
 
-.hero-main {
-    bottom: -50rem;
-    left: 0;
-    @apply absolute;
-}
-
 .hero-second {
     top: calc(50% + 120px);
     right: 0;

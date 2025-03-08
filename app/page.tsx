@@ -40,15 +40,12 @@ export default function Home() {
                     <div className="relative">
                         <section className=" w-full h-full">
                             <div className="hero-wrapper">
-                                <div className="hero-main">
-                                    <h1 className="text-[60px]  ">ft.Yuxuan Peng</h1>
+                                <div className=" absolute left-0 md:bottom-[-50rem] bottom-[-45rem]">
+                                    <h1 className="text-[50px] font-light italic">ft.Yuxuan Peng</h1>
                                     <p className="text-3xl"></p>
                                 </div>
                                 <div className="hero-second">
-                                    <h1 className="text-3xl uppercase font-bold italic">
-                                        Into my room
-                                        <br />
-                                    </h1>
+                                    <h1 className="text-[50px] uppercase font-normal ">Into my room</h1>
                                 </div>
                             </div>
                         </section>
@@ -58,8 +55,8 @@ export default function Home() {
                             <div className="section-intro-wrapper ">
                                 <span className="text-red-600">
                                     <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
-                                        <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl py-2 md:py-10 relative z-20 font-bold tracking-tight">
-                                            01 About
+                                        <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl py-2 md:py-10 relative z-20 font-normal ">
+                                            About
                                         </h2>
                                     </BackgroundLines>
                                     <div className="max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center"></div>
@@ -68,55 +65,64 @@ export default function Home() {
 
                             <div className="relative px-[10%] py-[5%]">
                                 <Icons classNames="flex flex-row items-center justify-between px-20" />
-                                <h3 className="text-3xl font-bold mt-[5rem] tracking-widest">Nice to Meet you, I am Yuxuan</h3>
-                                <p className="text-base mt-4 trading-wider white">
-                                    I'm a Front End/Full Stack Developer, specializing in <strong>React</strong>
+                                <h3 className="text-3xl  mt-[5rem] font-medium tracking-wide">Nice to Meet you, I am Yuxuan</h3>
+                                <p className="text-base mt-4 trading-wide font-normal">
+                                    I'm a Front End/Full Stack Developer, specializing in <strong>React </strong>
                                     and <strong>Next.js</strong>, with a focus on creating user-friendly and visually appealing interfaces. In
                                     addition to my core web development skills, I leverage design tools like Figma and Blender to bring interactive
                                     and immersive visuals to life.
                                 </p>
-                                <h3 className="text-3xl font-bold mt-[5rem] capitalize">I like art and DIY</h3>
-                                <p className="text-base mt-4">
+                                <h3 className="text-3xl font-medium mt-[5rem] capitalize">I like art and DIY</h3>
+                                <p className="text-base mt-4 trading-wide font-normal">
                                     Outside of programming, I pursue a wide range of creative interests—from ceramics and psychology to fashion and
                                     hands-on DIY projects.
                                 </p>
-                                <h3 className="text-3xl font-bold mt-[5rem] capitalize">A little secret</h3>
-                                <p className="text-base mt-4">I used to study finance, and had a fashion business venture.</p>
+                                <h3 className="text-3xl font-medium tracking-wide   mt-[5rem] capitalize">A little secret</h3>
+                                <p className="text-base mt-4 trading-wide font-normal">
+                                    I used to study finance, and had a fashion business venture.
+                                </p>
                             </div>
                         </section>
                         <div className="h-[2000px] second-move"></div>
                         {/* second section */}
-                        <section className="second-section relative w-[50%] py-[20rem] px-[4%] m-0 overflow-hidden bg-slate-300/95 ml-auto rounded-tl-[700px] rounded-bl-[0px] text-slate-500 section">
-                            <div className="section-detail-wrapper">
-                                <h3 className="text-2xl font-bold mt-[5rem] capitalize flex-row-center">heading1</h3>
-                                <Project
-                                    headerText="Awal"
-                                    descriptionText="language"
-                                    imageSrc="/projects/awal-logo.jpg"
-                                    leftBtnLink="https://github.com/CollectivaT-dev/awal-web"
-                                    leftBtnText="Repo	&gt;"
-                                    rightBtnLink="https://awaldigital.org/?lang=en"
-                                    rightBtnText="Visit it &gt;"
-                                />
-                                <Project
-                                    headerText="Unddd"
-                                    descriptionText="fashion adventure"
-                                    imageSrc="/projects/ecomm.png"
-                                    leftBtnLink="https://github.com/ppalladio/e-comm-front"
-                                    leftBtnText="Repo	&gt;"
-                                    rightBtnLink="https://unddd.yuxuanize.com/"
-                                    rightBtnText="Visit it &gt;"
-                                />
-                                <Project
-                                    headerText="Reservation Getaway Clone"
-                                    descriptionText="one of early projects"
-                                    imageSrc="/projects/booking.png"
-                                    leftBtnLink="https://github.com/ppalladio/fullstack-booking-website"
-                                    leftBtnText="Repo	&gt;"
-                                    rightBtnLink="https://bookin-demo.yuxuanize.com/"
-                                    rightBtnText="Visit it &gt;"
-                                />
+                        <section className="second-section relative w-[50%] py-[20rem] px-[4%] m-0 overflow-hidden bg-slate-300/95 ml-auto rounded-tl-[700px] rounded-bl-[0px]  section">
+                            <div className="section-intro-wrapper">
+                                <span className="text-red-600">
+                                    <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
+                                        <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl py-2 md:py-10 relative z-20 font-normal ">
+                                            Projects
+                                        </h2>
+                                    </BackgroundLines>
+                                    <div className="max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center"></div>
+                                </span>
                             </div>
+                            <Project
+                                headerText="Awal"
+                                descriptionText="Awal is a project that contributes to preserving and promoting the Tamazight language in the digital space by developing innovative tools that facilitate its use and dissemination."
+                                imageSrc="/projects/awal-logo.jpg"
+                                leftBtnLink="https://github.com/CollectivaT-dev/awal-web"
+                                leftBtnText="Repo	&gt;"
+                                rightBtnLink="https://awaldigital.org/?lang=en"
+                                rightBtnText="Visit it &gt;"
+                            />
+                            <Project
+                                headerText="Unddd"
+                                descriptionText="fashion adventure"
+                                imageSrc="/projects/ecomm.png"
+                                leftBtnLink="https://github.com/ppalladio/e-comm-front"
+                                leftBtnText="Repo	&gt;"
+                                rightBtnLink="https://unddd.yuxuanize.com/"
+                                rightBtnText="Visit it &gt;"
+                            />
+                            <Project
+                                headerText="Reservation Getaway Clone"
+                                descriptionText="one of early projects"
+                                imageSrc="/projects/booking.png"
+                                leftBtnLink="https://github.com/ppalladio/fullstack-booking-website"
+                                leftBtnText="Repo	&gt;"
+                                rightBtnLink="https://bookin-demo.yuxuanize.com/"
+                                rightBtnText="Visit it &gt;"
+                            />
                         </section>
                         <div className="h-[2000px] third-move"></div>
                         {/* third section */}
