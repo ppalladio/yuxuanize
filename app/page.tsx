@@ -107,7 +107,7 @@ export default function Home() {
                             />
                             <Project
                                 headerText="Unddd"
-                                descriptionText="fashion adventure"
+                                descriptionText="my almost fashion company"
                                 imageSrc="/projects/ecomm.png"
                                 leftBtnLink="https://github.com/ppalladio/e-comm-front"
                                 leftBtnText="Repo	&gt;"
@@ -115,8 +115,8 @@ export default function Home() {
                                 rightBtnText="Visit it &gt;"
                             />
                             <Project
-                                headerText="Reservation Getaway Clone"
-                                descriptionText="one of early projects"
+                                headerText="AlmostBnb"
+                                descriptionText="its not but its almost a bnb"
                                 imageSrc="/projects/booking.png"
                                 leftBtnLink="https://github.com/ppalladio/fullstack-booking-website"
                                 leftBtnText="Repo	&gt;"
