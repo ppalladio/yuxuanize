@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { CardBody, CardContainer, CardItem } from './ui/3d-card';
 import Link from 'next/link';
+import { CardBody, CardContainer, CardItem } from './ui/3d-card';
 
 interface ProjectProps {
     headerText: string;
@@ -30,7 +30,7 @@ const Project = ({ headerText, descriptionText, imageSrc, leftBtnText, leftBtnLi
                         src={imageSrc}
                         height="1000"
                         width="1000"
-                        className="h-80 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                        className="h-80 w-full object-cover rounded-xl shadow-md group-hover/card:shadow-xl"
                         alt="thumbnail"
                     />
                 </CardItem>
