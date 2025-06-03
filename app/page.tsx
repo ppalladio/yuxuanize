@@ -52,7 +52,7 @@ export default function Home() {
                         {/* second section */}
                         <section className="second-section relative w-[50%] py-[20rem] px-[4%] m-0 overflow-hidden bg-slate-300/95 ml-auto rounded-tl-[700px] rounded-bl-[0px]  section">
                             <div className="section-intro-wrapper">
-                                <span className="text-red-600">
+                                <span className="">
                                     <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
                                         <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl py-2 md:pt-10 relative z-20 font-normal ">
                                             Projects
@@ -113,12 +113,13 @@ export default function Home() {
                             id="3rd"
                             className="third-section relative w-[50%] py-[20rem] px-[4%] m-0 overflow-hidden bg-slate-400 mr-auto rounded-tr-[700px] rounded-br-[0px] section"
                         >
-                            {/* <span id='3rd' className="text-red-600">
+                            <span>
                                 <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
-                                   d
+                                    <h3 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-xl md:text-3xl lg:text-6xl py-2 md:pt-10 relative z-20 font-normal ">
+                                        Trying to fit everything in
+                                    </h3>
                                 </BackgroundLines>
-                                <div className="max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center"></div>
-                            </span> */}
+                            </span>
                             <div className="font-light text-xl relative px-[10%] py-[5%] space-y-2">
                                 <StackSection />
                             </div>

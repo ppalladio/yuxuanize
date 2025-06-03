@@ -1,6 +1,7 @@
 import Icons from '@/components/Icons';
 import StackIcon from '@/components/StackIcon';
 import { BackgroundLines } from '@/components/ui/background-lines';
+import { ContainerTextFlip } from '@/components/ui/container-text-flip';
 import Link from 'next/link';
 
 const IntroSection = () => {
@@ -31,25 +32,28 @@ const IntroSection = () => {
                         <StackIcon logo="react.svg" logoText="React" />
                         <StackIcon logo="next.svg" logoText="Next.js" />
                         <StackIcon logo="tailwind.svg" logoText="Tailwind" />
-                        <StackIcon logo="prisma.svg" logoText="Prisma" />
+                        <StackIcon logo="python.svg" logoText="python" />
                         <StackIcon logo="aws.svg" logoText="AWS" />
                         <StackIcon logo="docker.jpeg" logoText="Docker" />
                         <StackIcon logo="playwright.png" logoText="Playwright" />
                     </div>
-                    <div>
-                        and more because
-                        {/* 						
-						 I am suppose to know everything */}
+                    <div className="flex flex-row my-3">
+                        A longer list, obviously, because&nbsp;
+                        <ContainerTextFlip
+                            hoverDelayMs={90}
+                            words={[
+                                "I'm endlessly curious and full of enthusiasm",
+                                "I overcommit like it's an Olympic sport",
+                                'My ADHD says sleep is optional, ideas are not',
+                            ]}
+                        />
                     </div>
-                    <Link href="#3rd" onScroll={(e) => e.currentTarget.scrollIntoView({ behavior: 'smooth' })}>
-                        <button className="px-5 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">
-                            Full
-                        </button>
-                    </Link>
                 </div>
-
-                <h3 className="text-3xl font-medium tracking-wide   mt-[5rem] capitalize">A little secret</h3>
-                <p className="text-base mt-4 trading-wide font-normal">I used to study finance, and had a fashion business venture.</p>
+                <Link href="#3rd" onScroll={(e) => e.currentTarget.scrollIntoView({ behavior: 'smooth' })}>
+                    <button className="px-5 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">
+                        More
+                    </button>
+                </Link>
             </div>
         </section>
     );

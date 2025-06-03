@@ -15,6 +15,7 @@ const StackSection = () => {
                     <StackIcon logo="framer.svg" logoText="Framer Motion" />
                     <StackIcon logo="three.svg" logoText="Three.js" />
                     <StackIcon logo="blender.jpeg" logoText="Blender" />
+                    <StackIcon logo="sass.svg" logoText="sass" />
                 </div>
             </section>
 
@@ -27,6 +28,12 @@ const StackSection = () => {
                     <StackIcon logo="prisma.svg" logoText="Prisma" />
                     <StackIcon logo="mongo.svg" logoText="MongoDB" />
                     <StackIcon logo="neon.svg" logoText="NeonDB" />
+                    <StackIcon logo="drizzle.svg" logoText="Drizzle" />
+                    <StackIcon logo="insomnia.svg" logoText="insomnia" />
+                    <StackIcon logo="postman.svg" logoText="postman" />
+                    <StackIcon logo="js.svg" logoText="js" />
+                    <StackIcon logo="python.svg" logoText="python" />
+                    <StackIcon logo="ts.svg" logoText="Drizzle" />
                 </div>
             </section>
 
@@ -50,6 +57,7 @@ const StackSection = () => {
                     <StackIcon logo="resend.jpeg" logoText="Resend" />
                     <StackIcon logo="stripe.jpeg" logoText="Stripe" />
                     <StackIcon logo="mux.svg" logoText="Mux" />
+                    <StackIcon logo="clerk.jpeg" logoText="clerk" />
                 </div>
             </section>
         </div>
