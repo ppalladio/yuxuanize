@@ -1,10 +1,9 @@
-import * as THREE from 'three';
-import Experience from '../../Experience/Experience';
 import { Resources, Sizes, Time } from '@/lib/three-utils';
 import GSAP from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import * as THREE from 'three';
+import Experience from '../../Experience/Experience';
 import Camera from '../Camera';
-import { invalidate } from '@react-three/fiber';
 
 GSAP.registerPlugin(ScrollTrigger);
 
@@ -60,7 +59,6 @@ export default class Controls {
                     },
                 });
                 // second section tl
-      
 
                 this.secondMoveTimeline = GSAP.timeline({
                     scrollTrigger: {
