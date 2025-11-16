@@ -3,7 +3,7 @@
 import Icons from '@/components/Icons';
 import Project from '@/components/Project';
 import { BackgroundLines } from '@/components/ui/background-lines';
-import { Separator } from '@/components/ui/separator';
+import Link from 'next/link';
 import { useState } from 'react';
 import ExperienceComponent from './components/Experience/ExperienceComponent';
 import Loading from './components/Loading';
@@ -68,10 +68,18 @@ export default function Home() {
                                     addition to my core web development skills, I leverage design tools like Figma and Blender to bring interactive
                                     and immersive visuals to life.
                                 </p>
-
-                                <p className="text-base mt-4 trading-wide font-normal">
-                                    Currently working as Fullstack developer for an aeronautic company, always interested in new projects or collabs.
-                                </p>
+                                <div className="flex flex-col gap-y-2">
+                                    <p className="text-base mt-4 trading-wide font-normal">
+                                        Current working on{' '}
+                                        <Link className="text-blue-800" href="https://meldemo.yuxuanize.com">
+                                            AI chatbot demo project
+                                        </Link>{' '}
+                                        using <span>GSAP</span>, <span>Azure AI Foundry</span>, <span>svg.js</span>, <span>Playwright</span> and{' '}
+                                        <span>Vitest</span>
+                                    </p>
+                                    <p>P.S: Also playing with ESP32 and Arduino to build some IoT projects</p>
+                                    <p>P.P.S: Also trying crocheting but I think circular knitting is better.</p>
+                                </div>
                             </div>
                         </section>
                         <div className="h-[2000px] second-move"></div>
