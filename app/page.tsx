@@ -64,18 +64,16 @@ export default function Home() {
                                 <h3 className="text-3xl  mt-[5rem] font-medium tracking-wide">Nice to Meet you, I am Yuxuan</h3>
                                 <p className="text-base mt-4 trading-wide font-normal">
                                     I'm a Front End/Full Stack Developer, specializing in <strong>React </strong>
-                                    and <strong>Next.js</strong>, with a focus on creating user-friendly and visually appealing interfaces. In
-                                    addition to my core web development skills, I leverage design tools like Figma and Blender to bring interactive
-                                    and immersive visuals to life.
+                                    and <strong>Next.js</strong>, with a focus on creating user-friendly and visually appealing interfaces. In addition to my core web development skills, I leverage
+                                    design tools like Figma and Blender to bring interactive and immersive visuals to life.
                                 </p>
                                 <div className="flex flex-col gap-y-2">
                                     <p className="text-base mt-4 trading-wide font-normal">
                                         Current working on{' '}
-                                        <Link className="text-blue-800" href="https://meldemo.yuxuanize.com">
+                                        <Link className="text-blue-800" href="https://parlaamb.laclika.cat/">
                                             AI chatbot demo project
                                         </Link>{' '}
-                                        using <span>GSAP</span>, <span>Azure AI Foundry</span>, <span>svg.js</span>, <span>Playwright</span> and{' '}
-                                        <span>Vitest</span>
+                                        using <span>GSAP</span>, <span>Azure AI Foundry</span>, <span>svg.js</span>, <span>Playwright</span> and <span>Vitest</span>
                                     </p>
                                     <p>P.S: Also playing with ESP32 and Arduino to build some IoT projects</p>
                                     <p>P.P.S: Also trying crocheting but I think circular knitting is better.</p>
@@ -95,6 +93,15 @@ export default function Home() {
                                     <div className="max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center"></div>
                                 </span>
                             </div>
+                            <Project
+                                headerText="Mel"
+                                descriptionText="Mel is a project showcasing an animated chatbot that brings character interaction to life through Azure AI Foundry and custom SVG animations. Part of the La Clika family, Mel combines Azure Speech Services with SSML for personalized voice output, GSAP-powered lip-sync animations, and Azure's content guardrails for safe conversations. "
+                                imageSrc="/projects/mel.png"
+                                leftBtnLink=""
+                                leftBtnText=""
+                                rightBtnLink="https://parlaamb.laclika.cat/"
+                                rightBtnText="Visit it &gt;"
+                            />
                             <Project
                                 headerText="Awal"
                                 descriptionText="Awal is a project that contributes to preserving and promoting the Tamazight language in the digital space by developing innovative tools that facilitate its use and dissemination."
